@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SeedHub CLI Preview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: oklch(0.985 0.006 80);
+      --ink: oklch(0.22 0.01 75);
+      --muted: oklch(0.53 0.012 75);
+      --line: oklch(0.88 0.008 75);
+      --accent: oklch(0.55 0.16 150);
+      --terminal: oklch(0.25 0.015 150);
+      --terminal-ink: oklch(0.92 0.04 145);
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 64px;
+      padding: 72px 82px;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font: 600 20px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 72px;
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+    }
+
+    .summary {
+      max-width: 420px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 27px;
+      line-height: 1.45;
+    }
+
+    .terminal {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--terminal);
+      box-shadow: 0 24px 65px color-mix(in oklch, var(--terminal) 18%, transparent);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 54px;
+      padding: 0 22px;
+      border-bottom: 1px solid color-mix(in oklch, var(--terminal-ink) 14%, transparent);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: color-mix(in oklch, var(--terminal-ink) 30%, transparent);
+    }
+
+    pre {
+      min-height: 330px;
+      margin: 0;
+      padding: 32px;
+      color: var(--terminal-ink);
+      font: 500 20px/1.65 ui-monospace, SFMono-Regular, Menlo, monospace;
+      white-space: pre-wrap;
+    }
+
+    .prompt { color: oklch(0.78 0.15 145); }
+    .value { color: oklch(0.87 0.1 90); }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Open source · Python CLI</p>
+    <h1>SeedHub<br>CLI</h1>
+    <p class="summary">搜索影视资源，一次提取网盘与磁力链接。</p>
+  </main>
+
+  <section class="terminal" aria-label="SeedHub CLI 命令示例">
+    <div class="terminal-bar" aria-hidden="true">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <pre><span class="prompt">$</span> seedhub search "怪奇物语"
+
+找到 <span class="value">5</span> 个结果
+
+1. 怪奇物语 第五季
+   豆瓣 <span class="value">9.6</span> · ID 119254
+
+<span class="prompt">$</span> seedhub links 119254
+   夸克 · 百度 · 阿里云 · 磁力</pre>
+  </section>
+</body>
+</html>

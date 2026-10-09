@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Carrey Fan Preview</title>
+  <style>
+    @font-face {
+      font-family: "CarreyPixel";
+      src: url("../loading-culture-regular.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    :root {
+      color-scheme: light;
+      --paper: oklch(0.968 0.004 85);
+      --paper-soft: oklch(0.945 0.006 85);
+      --ink: oklch(0.24 0.008 80);
+      --muted: oklch(0.58 0.008 80);
+      --line: oklch(0.86 0.008 85);
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    nav {
+      position: absolute;
+      top: 38px;
+      left: 50%;
+      z-index: 2;
+      display: flex;
+      gap: 34px;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    main {
+      display: grid;
+      width: 100%;
+      min-height: 675px;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 62px;
+      padding: 90px 110px 58px;
+    }
+
+    .media {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--line);
+      background: var(--paper-soft);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .copy { max-width: 470px; }
+
+    h1 {
+      margin: 0;
+      font-family: "CarreyPixel", ui-monospace, monospace;
+      font-size: 69px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    p {
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 24px;
+      line-height: 1.6;
+    }
+
+    .code {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .code svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="页面栏目"><span>首页</span><span>项目</span><span>写作</span></nav>
+  <main>
+    <div class="media">
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Carrey Fan 首页视频预览">
+        <source src="../hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="copy">
+      <h1>Hi, I’m<br>Carrey.</h1>
+      <p>做自己的产品，记录过程，也记录想法。</p>
+      <span class="code">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.97.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.09c.98 0 1.94.13 2.84.38 2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.1c0 .31.21.68.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        Open source on GitHub
+      </span>
+    </div>
+  </main>
+</body>
+</html>

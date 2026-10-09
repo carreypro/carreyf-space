@@ -1,0 +1,8 @@
+.vercel
+nicecard/
+.playwright-cli/
+tmp/
+output/
+PRODUCT.md
+design-qa.md
+horse-animation-dark.html

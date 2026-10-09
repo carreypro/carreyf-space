@@ -1,0 +1,16 @@
+.DS_Store
+.vercel/
+.playwright-cli/
+nicecard/
+tmp/
+output/
+
+# Internal design notes and unused experiments
+PRODUCT.md
+design-qa.md
+horse-animation-dark.html
+
+# Third-party music assets are intentionally not open-sourced
+audio/*.mp3
+icons/runaway-cover.jpg
+loading-culture-regular.ttf

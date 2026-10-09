@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrey Fan</title>
+<meta name="description" content="Carrey Fan 的个人主页:做东西,写东西,记录过程。">
+<link rel="icon" type="image/svg+xml" href="icons/cf-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Schibsted+Grotesk:wght@400;500;600&family=Sono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+  @font-face {
+    font-family: "SarahLoadingCulture";
+    src: url("loading-culture-regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  :root {
+    --paper: oklch(0.968 0.004 85);
+    --paper-soft: oklch(0.952 0.005 85);
+    --ink: oklch(0.24 0.008 80);
+    --ink-soft: oklch(0.42 0.008 80);
+    --gray: oklch(0.60 0.008 80);
+    --line: oklch(0.88 0.006 85);
+    --accent: oklch(0.48 0.1 40);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; font-size: 14px; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: oklch(0.24 0.008 80 / 0.12); }
+
+  a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: oklch(0.24 0.008 80 / 0.45);
+    transition: text-decoration-color 0.25s var(--ease);
+  }
+  a:hover { text-decoration-color: var(--ink); }
+  a:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .page {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+
+  .site-controls {
+    position: fixed;
+    z-index: 60;
+    top: 1.25rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .page-nav {
+    position: absolute;
+    z-index: 55;
+    top: 0.8rem;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    gap: clamp(1.45rem, 2.25vw, 2.05rem);
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  .page-nav a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    padding: 0 0.05rem;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1;
+    text-decoration: none;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+  }
+  .page-nav a:hover,
+  .page-nav a:focus-visible,
+  .page-nav a[aria-current="page"] {
+    text-decoration-line: underline;
+    text-decoration-color: var(--ink);
+  }
+  .site-control {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--gray);
+    font-family: "Sono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: color 0.2s var(--ease);
+  }
+  .site-control:hover,
+  .site-control:focus-visible { color: var(--ink); }
+  .site-control:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+  .site-control i {
+    width: 0.9rem;
+    text-align: center;
+    font-size: 0.78rem;
+  }
+  .music-cover {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: 0 0 auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--line);
+    animation: music-cover-spin 7s linear infinite;
+    animation-play-state: paused;
+  }
+  #musicToggle[aria-pressed="true"] .music-cover {
+    animation-play-state: running;
+  }
+  @keyframes music-cover-spin {
+    to { transform: rotate(1turn); }
+  }
+  .page > * {
+    transition:
+      filter 0.22s cubic-bezier(0.2, 0, 0, 1),
+      opacity 0.22s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* ---------- 首屏 ---------- */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 4.5rem 0 5rem;
+  }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-copy {
+    max-width: 32rem;
+    margin: 1.8rem auto 0;
+    text-align: center;
+  }
+  .hero-name {
+    margin: 0;
+    color: var(--ink);
+    font-family: "SarahLoadingCulture", ui-monospace, monospace;
+    font-size: clamp(36px, 4.8svh, 62px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+  .hero-media-wrap {
+    width: min(32vw, 14rem);
+    flex: 0 0 auto;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .hero-media {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-media-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.7rem;
+    color: var(--ink-soft);
+    font-size: 0.93rem;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  .hero-media-link:hover,
+  .hero-media-link:focus-visible {
+    color: var(--ink);
+    text-decoration-line: underline;
+    text-decoration-color: var(--ink);
+  }
+  .hero-media-placeholder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: var(--gray);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+  .hero-intro {
+    max-width: 30rem;
+    margin: 0.75rem auto 0;
+    text-align: center;
+    line-height: 1.72;
+    color: var(--ink-soft);
+  }
+  .scroll-cue {
+    position: absolute;
+    bottom: 1.35rem;
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    color: var(--gray);
+    text-decoration: none;
+    transform: translateX(-50%);
+    perspective: 2rem;
+  }
+  .scroll-arrow {
+    display: block;
+    width: 0.58rem;
+    height: 0.36rem;
+    transform-origin: center;
+    animation: scroll-cue 1.2s linear infinite;
+  }
+  .scroll-arrow svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+  @keyframes scroll-cue {
+    to { transform: rotateY(360deg); }
+  }
+
+  /* ---------- 板块 ---------- */
+  section { margin-top: 2.6rem; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+  }
+  .section-label {
+    color: var(--gray);
+    font-size: 1rem;
+    font-family: "Sono", ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  #products .section-head { margin-bottom: 1.1rem; }
+  #products,
+  #writing { scroll-margin-top: 1.5rem; }
+  .products-stage { position: relative; }
+  .products-list {
+    display: flex;
+    max-width: 31rem;
+    flex-direction: column;
+    gap: 0.28rem;
+  }
+  .products-list:not(.is-expanded) .product:nth-of-type(n + 5) { display: none; }
+  .product {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin: 0 -0.75rem;
+    border-radius: 9px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background-color 0.18s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .product:hover,
+  .product:focus-visible {
+    background-color: color-mix(in oklch, var(--paper-soft) 60%, transparent);
+  }
+  .product-top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+  .product-name { font-weight: 500; font-size: 1rem; }
+  .product-desc {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .product-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--ink-soft);
+    background: var(--paper-soft);
+    border-radius: 999px;
+    padding: 0.12rem 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .product-tag i { font-size: 0.68rem; }
+  .products-more {
+    align-self: flex-start;
+    margin-top: 0.18rem;
+    padding: 0.42rem 0;
+    border: 0;
+    background: none;
+    color: var(--gray);
+    font: inherit;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    cursor: pointer;
+    transition: color 0.18s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .products-more:hover { color: var(--ink); }
+  .products-more:focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 4px;
+  }
+  .products-more[hidden],
+  .products-list:not(.has-overflow) .products-more { display: none; }
+
+  .project-preview {
+    display: none;
+    overflow: hidden;
+    width: 18rem;
+    height: auto;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(50%, 6px) scale(0.985);
+    transform-origin: 50% 20%;
+    transition:
+      opacity 0.18s cubic-bezier(0.2, 0, 0, 1),
+      transform 0.18s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .project-preview.is-visible {
+    opacity: 1;
+    transform: translateX(50%);
+  }
+  .project-preview-viewport {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .project-preview-frame {
+    display: block;
+    width: 1200px;
+    height: 675px;
+    border: 0;
+    opacity: 1;
+    pointer-events: none;
+    transform: scale(0.208333);
+    transform-origin: top left;
+    transition: opacity 0.18s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .project-preview-status {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--gray);
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.18s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .project-preview.is-loading .project-preview-frame { opacity: 0; }
+  .project-preview.is-loading .project-preview-status { opacity: 1; }
+  .project-preview-domain {
+    display: flex;
+    align-items: center;
+    height: 3.2rem;
+    padding: 0 0.85rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+  }
+
+  @media (hover: hover) and (pointer: fine) and (min-width: 960px) {
+    .page.is-project-previewing > :not(#products) {
+      filter: blur(5px);
+      opacity: 0.48;
+    }
+    #products {
+      position: relative;
+      z-index: 2;
+    }
+    #products {
+      width: 100%;
+      margin-left: 0;
+    }
+    .products-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 18rem;
+      align-items: start;
+      gap: 1rem;
+    }
+    .products-list { max-width: none; }
+    .project-preview {
+      display: block;
+      width: min(18rem, 100%);
+      align-self: start;
+      justify-self: end;
+    }
+  }
+
+  .contact-anchor {
+    position: relative;
+    display: inline-block;
+  }
+  .contact-links {
+    display: flex;
+    align-items: baseline;
+    color: var(--gray);
+  }
+  .contact-item { display: inline-flex; }
+  .contact-trigger {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: oklch(0.24 0.008 80 / 0.45);
+    cursor: pointer;
+  }
+  .contact-trigger:hover,
+  .contact-trigger:focus-visible { text-decoration-color: var(--ink); }
+
+  /* ---------- 经历与 AI Coding ---------- */
+  .xp-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding: 0.7rem 0;
+  }
+  .xp-row + .xp-row { border-top: 1px solid var(--line); }
+  .xp-body { flex: 1; min-width: 0; }
+  .xp-title { font-weight: 600; font-size: 1rem; }
+  .xp-desc { color: var(--gray); font-size: 1rem; line-height: 1.6; }
+  .xp-period { color: var(--gray); font-size: 1rem; flex: 0 0 auto; }
+
+  .stack-group { margin-top: 1.4rem; }
+  .stack-group + .stack-group { margin-top: 2rem; }
+  .stack-label { color: var(--gray); font-size: 1rem; margin-bottom: 0.8rem; }
+  .stack-items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .stack-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem 0.3rem 0.6rem;
+    cursor: pointer;
+    transition: color 0.3s var(--ease);
+  }
+  .stack-chip:hover { color: var(--ink); }
+  .stack-chip img {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 4px;
+    display: block;
+    filter: grayscale(1);
+    opacity: 0.65;
+    transition: filter 0.3s var(--ease), opacity 0.3s var(--ease);
+  }
+  .stack-chip:hover img { filter: grayscale(0); opacity: 1; }
+  /* ---------- 博客列表(sanyam 风格) ---------- */
+  .blog-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 0.9rem 0;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .blog-title { font-weight: 400; }
+  .blog-row:hover .blog-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .blog-date {
+    color: var(--gray);
+    font-size: 0.92rem;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .row-link {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding: 0.55rem 0;
+    text-decoration: none;
+  }
+  .row-link .name {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: oklch(0.24 0.008 80 / 0.45);
+    transition: text-decoration-color 0.25s var(--ease);
+  }
+  .row-link:hover .name { text-decoration-color: var(--ink); }
+  .row-link .desc { color: var(--gray); font-size: 1rem; flex: 1; }
+  .row-link .arrow {
+    color: var(--gray);
+    transition: transform 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  .row-link:hover .arrow { transform: translate(3px, -3px); color: var(--ink); }
+
+  .horse-footer {
+    height: clamp(14rem, 38vw, 22rem);
+    margin: clamp(2.5rem, 6vh, 4rem) -1.5rem 0;
+  }
+  .horse-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: var(--paper);
+  }
+
+  /* ---------- 联系方式浮窗 ---------- */
+  .contact-popover {
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    bottom: calc(100% + 0.35rem);
+    width: min(18.5rem, calc(100vw - 3rem));
+    padding: 1.2rem 1.25rem 1.35rem;
+    background: var(--paper);
+    border: 1px solid var(--ink-soft);
+    border-radius: 7px;
+    box-shadow: 3px 4px 0 var(--line);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(8px) scale(0.985);
+    transform-origin: 36% 100%;
+    transition:
+      opacity 0.22s var(--ease),
+      transform 0.22s var(--ease),
+      visibility 0s linear 0.22s;
+  }
+  .contact-popover::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -0.75rem;
+    left: 0;
+    height: 0.85rem;
+  }
+  .contact-popover::after {
+    content: "";
+    position: absolute;
+    left: 7.7rem;
+    bottom: -6px;
+    width: 11px;
+    height: 11px;
+    background: var(--paper);
+    border-right: 1px solid var(--ink-soft);
+    border-bottom: 1px solid var(--ink-soft);
+    transform: rotate(45deg);
+  }
+  .contact-item.is-open .contact-popover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition-delay: 0s;
+  }
+  .contact-popover-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .contact-account {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+  }
+  .contact-platform-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--ink);
+    font-size: 1.45rem;
+  }
+  .contact-platform-copy { min-width: 0; }
+  .contact-popover-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.96rem;
+    line-height: 1.25;
+  }
+  .contact-popover-id {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--gray);
+    font-size: 0.8rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+  .contact-popover-close {
+    appearance: none;
+    display: grid;
+    place-items: center;
+    flex: 0 0 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 0.82rem;
+  }
+  .contact-popover-close:hover { background: var(--paper-soft); border-radius: 4px; }
+  .contact-popover-body--compact {
+    padding-top: 1.35rem;
+  }
+  .contact-popover--email {
+    width: min(18.5rem, calc(100vw - 3rem));
+  }
+  .contact-popover--douyin {
+    width: min(18.5rem, calc(100vw - 3rem));
+  }
+  .contact-popover--x {
+    width: min(18.5rem, calc(100vw - 3rem));
+  }
+  .contact-popover--x::after { left: 1.35rem; }
+  .contact-popover--douyin::after { left: 4.35rem; }
+  .contact-popover--email::after { left: 8.55rem; }
+  .contact-popover--wechat::after { left: 13.35rem; }
+  .contact-metric {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    min-width: 0;
+  }
+  .contact-metric strong {
+    color: var(--ink);
+    font-family: "SarahLoadingCulture", ui-monospace, monospace;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+  .contact-metric span {
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+  }
+  .copy-contact {
+    appearance: none;
+    display: inline-block;
+    margin-top: 1.55rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.86rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+  .contact-popover-action {
+    display: inline-block;
+    margin-top: 1.55rem;
+    font-size: 0.86rem;
+  }
+
+  /* ---------- 进场 ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 860px) {
+    .biz-cols { grid-template-columns: 1fr; gap: 2.2rem; }
+  }
+  @media (max-width: 540px) {
+    .site-controls { top: 0.9rem; right: 1rem; gap: 0.75rem; }
+    .page-nav { top: 0.7rem; gap: 1.15rem; }
+    .page-nav a { font-size: 0.9rem; }
+    .hero-name { font-size: clamp(28px, 9.6vw, 54px); white-space: normal; line-height: 1.45; }
+    .hero-media-wrap { width: min(58vw, 14rem); }
+    .product-desc { font-size: 1rem; }
+    .contact-popover--x::after { left: 1.35rem; }
+    .contact-popover--douyin::after { left: 4.2rem; }
+    .contact-popover--email::after { left: 8.3rem; }
+    .contact-popover--wechat::after { left: 12.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<audio id="siteMusic" src="audio/runaway-web.mp3" preload="metadata" loop></audio>
+<nav class="page-nav" aria-label="页面导航">
+  <a href="#top" data-nav-target="top" aria-current="page">首页</a>
+  <a href="#products" data-nav-target="products">项目</a>
+  <a href="#writing" data-nav-target="writing">写作</a>
+</nav>
+<nav class="site-controls" aria-label="音乐控制">
+  <button class="site-control" id="musicToggle" type="button" aria-label="播放背景音乐" aria-pressed="false">
+    <img class="music-cover" src="icons/runaway-cover.jpg" alt="" aria-hidden="true">
+    <span id="musicLabel">music off</span>
+  </button>
+</nav>
+
+<div class="page" id="top">
+
+  <!-- ══════════════ 首屏 ══════════════ -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-media-wrap">
+        <video class="hero-media" autoplay muted loop playsinline preload="auto" aria-label="首屏视频">
+          <source src="hero.mp4" type="video/mp4">
+        </video>
+      </div>
+      <a class="hero-media-link" href="https://v.douyin.com/gXWVxXLpF-s/" target="_blank" rel="noopener noreferrer">watch a little of my life ↗</a>
+    </div>
+    <div class="hero-copy">
+      <h1 class="hero-name">Hi, I’m Carrey.</h1>
+      <p class="hero-intro">一名产品经理，也做自己的产品，记录过程，记录想法。如果你也在用 AI 做东西，或者想聊聊合作，欢迎<a href="#contact" data-open-contact>联系我</a>。</p>
+    </div>
+    <a class="scroll-cue" href="#products" aria-label="向下浏览项目">
+      <span class="scroll-arrow" aria-hidden="true">
+        <svg viewBox="0 0 8 5" shape-rendering="crispEdges" focusable="false">
+          <path d="M0 0h8v2H6v2H5v1H3V4H2V2H0z"/>
+        </svg>
+      </span>
+    </a>
+  </header>
+
+  <!-- ══════════════ 项目 ══════════════ -->
+  <section class="reveal" id="products">
+    <div class="section-head">
+      <span class="section-label">项目</span>
+    </div>
+
+    <div class="products-stage">
+      <div class="products-list has-overflow" id="productsList">
+        <a class="product" href="https://nicecard.space" target="_blank" rel="noopener">
+          <span class="product-top">
+            <span class="product-name">Nicecard</span>
+            <span class="product-tag"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>新</span>
+          </span>
+          <span class="product-desc">寻找最适合你的加密货币卡</span>
+        </a>
+
+        <a class="product" href="https://github.com/carreypro/seedhub-cli" target="_blank" rel="noopener" data-preview-url="projects/seedhub-cli.html" data-preview-domain="github.com/carreypro/seedhub-cli">
+          <span class="product-top">
+            <span class="product-name">SeedHub CLI</span>
+            <span class="product-tag"><i class="fa-brands fa-github" aria-hidden="true"></i>开源</span>
+          </span>
+          <span class="product-desc">搜索 SeedHub 影视资源与下载链接</span>
+        </a>
+
+        <a class="product" href="https://github.com/carreypro/carreyf-space" target="_blank" rel="noopener" data-preview-url="projects/carreyf-space.html" data-preview-domain="github.com/carreypro/carreyf-space">
+          <span class="product-top">
+            <span class="product-name">Carrey Fan</span>
+            <span class="product-tag"><i class="fa-brands fa-github" aria-hidden="true"></i>开源</span>
+          </span>
+          <span class="product-desc">我的个人主页与作品入口</span>
+        </a>
+
+        <a class="product" href="https://www.yjwujian.cn" target="_blank" rel="noopener">
+          <span class="product-top">
+            <span class="product-name">永劫无间</span>
+            <span class="product-tag"><i class="fa-solid fa-gamepad" aria-hidden="true"></i>游戏</span>
+          </span>
+          <span class="product-desc">武侠动作竞技游戏</span>
+        </a>
+
+        <a class="product" href="https://www.yjwujian.cn/h5/20240401/slap/#/" target="_blank" rel="noopener">
+          <span class="product-top">
+            <span class="product-name">别逼胡桃出手</span>
+            <span class="product-tag"><i class="fa-solid fa-dice" aria-hidden="true"></i>小游戏</span>
+          </span>
+          <span class="product-desc">永劫无间衍生小游戏</span>
+        </a>
+
+        <a class="product" href="https://csgo.5eplay.com/app" target="_blank" rel="noopener">
+          <span class="product-top">
+            <span class="product-name">5EPlay</span>
+            <span class="product-tag"><i class="fa-brands fa-app-store-ios" aria-hidden="true"></i>APP</span>
+          </span>
+          <span class="product-desc">CS 玩家的竞技匹配平台</span>
+        </a>
+
+        <button class="products-more" id="productsMore" type="button" aria-expanded="false" aria-controls="productsList">更多</button>
+      </div>
+
+      <aside class="project-preview" id="projectPreview" aria-hidden="true">
+        <div class="project-preview-viewport">
+          <iframe class="project-preview-frame" id="projectPreviewFrame" title="项目网页预览" tabindex="-1" sandbox="allow-scripts allow-same-origin"></iframe>
+          <span class="project-preview-status">正在载入预览…</span>
+        </div>
+        <span class="project-preview-domain" id="projectPreviewDomain"></span>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ══════════════ Experience(编辑这里:你的真实经历) ══════════════ -->
+  <section class="reveal">
+    <div class="section-head">
+      <span class="section-label">经历</span>
+    </div>
+    <div class="xp-row">
+      <div class="xp-body">
+        <span class="xp-title">Nicecard · 独立产品</span><br>
+        <span class="xp-desc">U 卡信息库 nicecard.space,从策划、设计到上线独立负责</span>
+      </div>
+      <span class="xp-period">2025 — 至今</span>
+    </div>
+    <div class="xp-row">
+      <div class="xp-body">
+        <span class="xp-title">网易 · 产品经理</span><br>
+        <span class="xp-desc">永劫无间官网与衍生小游戏的产品工作</span>
+      </div>
+      <span class="xp-period">— 2025</span>
+    </div>
+  </section>
+
+  <!-- ══════════════ Tech Stack(编辑这里:你的工具) ══════════════ -->
+  <section class="reveal">
+    <div class="section-head">
+      <span class="section-label">AI Coding</span>
+    </div>
+    <div class="stack-group">
+      <p class="stack-label">AI &amp; Tools</p>
+      <div class="stack-items">
+        <span class="stack-chip"><img src="icons/stack/anthropic.svg" alt="Claude Code">Claude Code</span>
+        <span class="stack-chip"><img src="icons/stack/cursor.svg" alt="Cursor">Cursor</span>
+        <span class="stack-chip"><img src="icons/stack/gemini.svg" alt="Gemini">Gemini</span>
+        <span class="stack-chip"><img src="icons/stack/openai.png" alt="Codex">Codex</span>
+        <span class="stack-chip"><img src="icons/stack/grokbot.png" alt="Grokbot">Grokbot</span>
+        <span class="stack-chip"><img src="icons/stack/muse.svg" alt="Muse">Muse</span>
+      </div>
+    </div>
+    <div class="stack-group">
+      <p class="stack-label">Design</p>
+      <div class="stack-items">
+        <span class="stack-chip"><img src="icons/stack/figma.svg" alt="Figma">Figma</span>
+        <span class="stack-chip"><img src="icons/stack/photoshop.png" alt="Photoshop">Photoshop</span>
+        <span class="stack-chip"><img src="icons/stack/canva.png" alt="Canva">Canva</span>
+        <span class="stack-chip"><img src="icons/stack/axure.png" alt="Axure">Axure</span>
+        <span class="stack-chip"><img src="icons/stack/mastergo.png" alt="MasterGo">MasterGo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 我的写作 ══════════════ -->
+  <section class="reveal" id="writing">
+    <div class="section-head">
+      <span class="section-label">我的写作</span>
+    </div>
+    <a class="blog-row" href="blog/giffgaff-uk-sim.html">
+      <span class="blog-title">giffgaff 英国 SIM 卡申请指南</span>
+      <span class="blog-date">jun 24, 2026</span>
+    </a>
+    <a class="blog-row" href="blog/plasma-one-card.html">
+      <span class="blog-title">Plasma One 加密货币卡申请指南</span>
+      <span class="blog-date">jun 12, 2026</span>
+    </a>
+  </section>
+
+  <!-- ══════════════ 联系方式 ══════════════ -->
+  <section class="reveal" id="contact">
+    <div class="section-head">
+      <span class="section-label">联系方式</span>
+    </div>
+    <div class="contact-anchor" id="contactAnchor">
+      <div class="contact-links">
+        <span class="contact-item" data-contact-item="x">
+          <a class="contact-trigger" id="xTrigger" href="https://x.com/carreyfx" target="_blank" rel="noopener" aria-label="在 X 打开 @carreyfx">𝕏 ↗</a>
+          <aside class="contact-popover contact-popover--x" id="xPopover" role="dialog" aria-label="Carrey 的 X" aria-hidden="true">
+            <div class="contact-popover-head">
+              <div class="contact-account">
+                <span class="contact-platform-icon" aria-hidden="true"><i class="fa-brands fa-x-twitter"></i></span>
+                <div class="contact-platform-copy">
+                  <span class="contact-popover-title">X</span>
+                  <span class="contact-popover-id">@carreyfx</span>
+                </div>
+              </div>
+              <button class="contact-popover-close" type="button" data-close-contact aria-label="关闭 X 浮窗"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <div class="contact-popover-body--compact">
+              <div class="contact-metric"><strong>X</strong><span>@carreyfx</span></div>
+              <a class="contact-popover-action" href="https://x.com/carreyfx" target="_blank" rel="noopener">打开 X ↗</a>
+            </div>
+          </aside>
+        </span>
+        <span aria-hidden="true">、</span>
+
+        <span class="contact-item" data-contact-item="douyin">
+          <a class="contact-trigger" id="douyinTrigger" href="https://www.douyin.com/user/MS4wLjABAAAAqnm8e3GhAfy0Gj7xelz77gdFtZNWolBFedL1Pbn-YFc?from_tab_name=main&amp;vid=7693537082408781530" target="_blank" rel="noopener noreferrer" aria-label="在抖音打开 interlinked">抖音 ↗</a>
+          <aside class="contact-popover contact-popover--douyin" id="douyinPopover" role="dialog" aria-label="Carrey 的抖音" aria-hidden="true">
+            <div class="contact-popover-head">
+              <div class="contact-account">
+                <span class="contact-platform-icon" aria-hidden="true"><i class="fa-brands fa-tiktok"></i></span>
+                <div class="contact-platform-copy">
+                  <span class="contact-popover-title">抖音</span>
+                  <span class="contact-popover-id">@interlinked</span>
+                </div>
+              </div>
+              <button class="contact-popover-close" type="button" data-close-contact aria-label="关闭抖音浮窗"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <div class="contact-popover-body--compact">
+              <div class="contact-metric"><strong>150166665</strong><span>抖音号</span></div>
+              <a class="contact-popover-action" href="https://www.douyin.com/user/MS4wLjABAAAAqnm8e3GhAfy0Gj7xelz77gdFtZNWolBFedL1Pbn-YFc?from_tab_name=main&amp;vid=7693537082408781530" target="_blank" rel="noopener noreferrer">打开抖音 ↗</a>
+            </div>
+          </aside>
+        </span>
+        <span aria-hidden="true">、</span>
+
+        <span class="contact-item" data-contact-item="email">
+          <button class="contact-trigger" id="emailTrigger" type="button" aria-haspopup="dialog" aria-controls="emailPopover" aria-expanded="false">Email ↗</button>
+          <aside class="contact-popover contact-popover--email" id="emailPopover" role="dialog" aria-label="Carrey 的邮箱" aria-hidden="true">
+            <div class="contact-popover-head">
+              <div class="contact-account">
+                <span class="contact-platform-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+                <div class="contact-platform-copy">
+                  <span class="contact-popover-title">Email</span>
+                  <span class="contact-popover-id">fankairuix@163.com</span>
+                </div>
+              </div>
+              <button class="contact-popover-close" type="button" data-close-contact aria-label="关闭邮箱浮窗"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <div class="contact-popover-body--compact">
+              <div class="contact-metric"><strong>163</strong><span>邮箱</span></div>
+              <a class="contact-popover-action" href="mailto:fankairuix@163.com">发送邮件 ↗</a>
+            </div>
+          </aside>
+        </span>
+
+        <span aria-hidden="true">、</span>
+
+        <span class="contact-item" data-contact-item="wechat">
+          <button class="contact-trigger" id="wechatTrigger" type="button" aria-haspopup="dialog" aria-controls="wechatPopover" aria-expanded="false">微信 ↗</button>
+          <aside class="contact-popover contact-popover--wechat" id="wechatPopover" role="dialog" aria-label="Carrey 的微信" aria-hidden="true">
+            <div class="contact-popover-head">
+              <div class="contact-account">
+                <span class="contact-platform-icon" aria-hidden="true"><i class="fa-brands fa-weixin"></i></span>
+                <div class="contact-platform-copy">
+                  <span class="contact-popover-title">微信</span>
+                  <span class="contact-popover-id">@carreyf</span>
+                </div>
+              </div>
+              <button class="contact-popover-close" type="button" data-close-contact aria-label="关闭微信浮窗"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <div class="contact-popover-body--compact">
+              <div class="contact-metric"><strong>carreyf</strong><span>微信号</span></div>
+              <button class="copy-contact" type="button" data-copy="carreyf" data-copy-label="复制微信号 ↗"><span class="copy-label">复制微信号 ↗</span></button>
+            </div>
+          </aside>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 奔马动画 ══════════════ -->
+  <div class="horse-footer">
+    <iframe class="horse-frame" src="horse-animation.html" title="奔马动画" loading="lazy"></iframe>
+  </div>
+
+</div>
+
+<script>
+  // 顶部音乐控制：音乐默认关闭
+  const siteMusic = document.getElementById('siteMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  const musicLabel = document.getElementById('musicLabel');
+
+  function syncMusicControl() {
+    const isPlaying = !siteMusic.paused;
+    musicLabel.textContent = isPlaying ? 'music on' : 'music off';
+    musicToggle.setAttribute('aria-label', isPlaying ? '关闭背景音乐' : '播放背景音乐');
+    musicToggle.setAttribute('aria-pressed', String(isPlaying));
+  }
+
+  siteMusic.volume = 0.58;
+  syncMusicControl();
+  musicToggle.addEventListener('click', async () => {
+    if (siteMusic.paused) {
+      try { await siteMusic.play(); } catch {}
+    } else {
+      siteMusic.pause();
+    }
+    syncMusicControl();
+  });
+  siteMusic.addEventListener('play', syncMusicControl);
+  siteMusic.addEventListener('pause', syncMusicControl);
+
+  // 顶部导航：点击定位，并根据阅读位置更新下划线
+  const pageNavLinks = [...document.querySelectorAll('.page-nav a')];
+  const pageNavTargets = pageNavLinks.map((link) => ({
+    link,
+    section: document.getElementById(link.dataset.navTarget)
+  }));
+  let pageNavFrame;
+
+  function syncPageNav() {
+    const marker = window.scrollY + Math.min(window.innerHeight * 0.35, 240);
+    let active = pageNavTargets[0];
+    pageNavTargets.forEach((target) => {
+      if (target.section.offsetTop <= marker) active = target;
+    });
+    pageNavLinks.forEach((link) => {
+      if (link === active.link) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    pageNavFrame = null;
+  }
+
+  function queuePageNavSync() {
+    if (!pageNavFrame) pageNavFrame = requestAnimationFrame(syncPageNav);
+  }
+
+  pageNavLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      pageNavLinks.forEach((candidate) => candidate.removeAttribute('aria-current'));
+      link.setAttribute('aria-current', 'page');
+    });
+  });
+  window.addEventListener('scroll', queuePageNavSync, { passive: true });
+  window.addEventListener('resize', queuePageNavSync);
+  syncPageNav();
+
+  // 项目预览：桌面悬停或键盘聚焦时显示对应网页缩略图
+  const projectPreview = document.getElementById('projectPreview');
+  const projectPreviewFrame = document.getElementById('projectPreviewFrame');
+  const projectPreviewDomain = document.getElementById('projectPreviewDomain');
+  const productsList = document.getElementById('productsList');
+  const productsMore = document.getElementById('productsMore');
+  const projectLinks = [...productsList.querySelectorAll('.product')];
+  const projectPreviewLimit = 4;
+  const page = document.querySelector('.page');
+  const canShowProjectPreview = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 960px)');
+  let projectPreviewLoadTimer;
+
+  const hasProjectOverflow = projectLinks.length > projectPreviewLimit;
+  productsList.classList.toggle('has-overflow', hasProjectOverflow);
+  productsMore.hidden = !hasProjectOverflow;
+
+  productsMore.addEventListener('click', () => {
+    const expanded = !productsList.classList.contains('is-expanded');
+    productsList.classList.toggle('is-expanded', expanded);
+    productsMore.setAttribute('aria-expanded', String(expanded));
+    productsMore.textContent = expanded ? '收起' : '更多';
+
+    if (!expanded) hideProjectPreview();
+  });
+
+  function showProjectPreview(link) {
+    if (!canShowProjectPreview.matches) return;
+
+    const url = new URL(link.href);
+    const previewUrl = new URL(link.dataset.previewUrl || url.href, window.location.href).href;
+
+    projectPreviewDomain.textContent = link.dataset.previewDomain || url.hostname.replace(/^www\./, '');
+    projectPreview.classList.add('is-visible');
+    page.classList.add('is-project-previewing');
+
+    if (projectPreviewFrame.dataset.previewUrl !== previewUrl) {
+      clearTimeout(projectPreviewLoadTimer);
+      projectPreview.classList.add('is-loading');
+      projectPreviewFrame.dataset.previewUrl = previewUrl;
+      projectPreviewFrame.src = previewUrl;
+      projectPreviewLoadTimer = setTimeout(() => {
+        projectPreview.classList.remove('is-loading');
+      }, 2400);
+    }
+  }
+
+  function hideProjectPreview() {
+    projectPreview.classList.remove('is-visible');
+    page.classList.remove('is-project-previewing');
+  }
+
+  projectPreviewFrame.addEventListener('load', () => {
+    clearTimeout(projectPreviewLoadTimer);
+    projectPreview.classList.remove('is-loading');
+  });
+
+  projectLinks.forEach((link) => {
+    link.addEventListener('pointerenter', () => showProjectPreview(link));
+    link.addEventListener('pointerleave', hideProjectPreview);
+    link.addEventListener('focus', () => showProjectPreview(link));
+    link.addEventListener('blur', hideProjectPreview);
+  });
+  canShowProjectPreview.addEventListener('change', (event) => {
+    if (!event.matches) hideProjectPreview();
+  });
+
+  // 联系方式浮窗：桌面悬停，键盘聚焦与移动端点击均可打开
+  const contactAnchor = document.getElementById('contactAnchor');
+  const contactItems = [...document.querySelectorAll('[data-contact-item]')];
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const contactCloseTimers = new WeakMap();
+
+  function clearContactCloseTimer(item) {
+    const timer = contactCloseTimers.get(item);
+    if (timer) clearTimeout(timer);
+    contactCloseTimers.delete(item);
+  }
+
+  function scheduleContactClose(item) {
+    clearContactCloseTimer(item);
+    contactCloseTimers.set(item, setTimeout(() => {
+      if (!item.matches(':hover') && !item.contains(document.activeElement)) {
+        setContactPopover(item, false);
+      }
+    }, 220));
+  }
+
+  function closeContactPopovers() {
+    contactItems.forEach((candidate) => {
+      clearContactCloseTimer(candidate);
+      candidate.classList.remove('is-open');
+      const trigger = candidate.querySelector('.contact-trigger');
+      if (trigger.hasAttribute('aria-expanded')) trigger.setAttribute('aria-expanded', 'false');
+      candidate.querySelector('.contact-popover').setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  function setContactPopover(item, open) {
+    clearContactCloseTimer(item);
+    if (open) closeContactPopovers();
+    item.classList.toggle('is-open', open);
+    const trigger = item.querySelector('.contact-trigger');
+    if (trigger.hasAttribute('aria-expanded')) trigger.setAttribute('aria-expanded', String(open));
+    item.querySelector('.contact-popover').setAttribute('aria-hidden', String(!open));
+  }
+
+  contactItems.forEach((item) => {
+    const trigger = item.querySelector('.contact-trigger');
+
+    item.addEventListener('pointerenter', () => {
+      if (canHover.matches) {
+        clearContactCloseTimer(item);
+        setContactPopover(item, true);
+      }
+    });
+    item.addEventListener('pointerleave', () => {
+      if (canHover.matches && !item.contains(document.activeElement)) scheduleContactClose(item);
+    });
+    item.addEventListener('focusin', () => {
+      clearContactCloseTimer(item);
+      setContactPopover(item, true);
+    });
+    item.addEventListener('focusout', () => {
+      requestAnimationFrame(() => {
+        if (!item.contains(document.activeElement)) setContactPopover(item, false);
+      });
+    });
+    trigger.addEventListener('click', () => {
+      if (!canHover.matches && trigger.tagName === 'BUTTON') setContactPopover(item, true);
+    });
+  });
+
+  document.querySelectorAll('[data-close-contact]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = button.closest('[data-contact-item]');
+      item.querySelector('.contact-trigger').focus();
+      setContactPopover(item, false);
+    });
+  });
+
+  document.addEventListener('pointerdown', (event) => {
+    if (!contactAnchor.contains(event.target)) closeContactPopovers();
+  });
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      const openItem = contactItems.find((item) => item.classList.contains('is-open'));
+      openItem?.querySelector('.contact-trigger').focus();
+      closeContactPopovers();
+    }
+  });
+  document.querySelectorAll('[data-open-contact]').forEach((link) => {
+    link.addEventListener('click', () => {
+      setTimeout(() => {
+        const wechatItem = contactItems.find((item) => item.dataset.contactItem === 'wechat');
+        setContactPopover(wechatItem, true);
+        wechatItem.querySelector('.contact-trigger').focus({ preventScroll: true });
+      }, 350);
+    });
+  });
+
+  // 复制微信号
+  document.querySelectorAll('.copy-contact').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const label = button.querySelector('.copy-label');
+      try {
+        await navigator.clipboard.writeText(button.dataset.copy);
+        label.textContent = '已复制';
+        setTimeout(() => { label.textContent = button.dataset.copyLabel; }, 1600);
+      } catch {
+        label.textContent = button.dataset.copy;
+      }
+    });
+  });
+
+  // 首屏视频缺失时隐藏 video,显示占位
+  const heroVideo = document.querySelector('.hero-media');
+  heroVideo.addEventListener('error', () => {
+    const ph = document.createElement('div');
+    ph.className = 'hero-media-placeholder';
+    ph.textContent = '视频占位';
+    heroVideo.replaceWith(ph);
+  }, true);
+
+  // 进场动画
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  console.log('你好,很高兴你打开了控制台 ✦ Carrey');
+</script>
+
+</body>
+</html>

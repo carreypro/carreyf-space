@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>giffgaff 英国 SIM 卡申请指南 — carrey</title>
+<meta name="description" content="giffgaff 英国 SIM 卡申请指南">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 52"><path d="M4 50 L4 20 Q4 4 20 4 Q36 4 36 20 L36 50 Q20 55 4 50 Z" fill="%231a1a1a"/><circle cx="14" cy="22" r="3" fill="%23f6f5f1"/><circle cx="26" cy="22" r="3" fill="%23f6f5f1"/></svg>'>
+<style>
+  body { background: oklch(0.968 0.004 85); color: oklch(0.24 0.008 80); font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Source Han Sans SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; font-size: 14.4px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  ::selection { background: oklch(0.24 0.008 80 / 0.12); }
+  .page { max-width: 42rem; margin: 0 auto; padding: 2.5rem 1.5rem 8rem; }
+  a { color: oklch(0.24 0.008 80); font-weight: 500; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; text-decoration-color: oklch(0.24 0.008 80 / 0.45); word-break: break-all; }
+  a:hover { text-decoration-color: oklch(0.24 0.008 80); }
+  .back { display: inline-block; color: oklch(0.60 0.008 80); text-decoration: none; font-size: 0.92rem; margin-bottom: 3rem; }
+  .back:hover { color: oklch(0.24 0.008 80); }
+  time { display: block; color: oklch(0.60 0.008 80); font-size: 0.85rem; margin-bottom: 2.5rem; }
+  article h1 { font-size: 1.2rem; font-weight: 400; line-height: 1.5; letter-spacing: 0.01em; margin: 0 0 0.4rem; }
+  article h2 { font-size: 1rem; font-weight: 500; margin: 2.8rem 0 0.9rem; }
+  
+  article h3 { font-size: 1rem; font-weight: 500; margin: 2.2rem 0 0.7rem; }
+  article p { margin: 0 0 1.2em; }
+  article img { display: block; max-width: 100%; border-radius: 12px; margin: 1.6rem auto; }
+  article ul, article ol { margin: 0 0 1.2em; padding-left: 1.6em; }
+  article li { margin-bottom: 0.35em; }
+  article li > p { margin: 0; }
+  article blockquote { margin: 1.6rem 0; padding: 1rem 1.3rem; background: oklch(0.952 0.005 85); border-radius: 14px; border: 1px solid oklch(0.88 0.006 85); }
+  article blockquote p { margin: 0.4em 0; color: oklch(0.42 0.008 80); }
+  article blockquote ul { margin-bottom: 0; }
+  article table { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: 0.92rem; }
+  article th, article td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid oklch(0.88 0.006 85); vertical-align: top; }
+  article th { color: oklch(0.60 0.008 80); font-weight: 400; }
+  article hr { border: none; border-top: 1px solid oklch(0.88 0.006 85); margin: 3rem 0; }
+  article code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; background: oklch(0.952 0.005 85); border-radius: 6px; padding: 0.1em 0.4em; }
+  article pre { background: oklch(0.952 0.005 85); border-radius: 12px; padding: 1rem 1.2rem; overflow-x: auto; }
+  article pre code { background: none; padding: 0; }
+  article input[type='checkbox'] { margin-right: 0.45em; transform: translateY(1px); }
+  @media (max-width: 540px) {
+    body { font-size: 14px; }
+    .page { padding: 1.6rem 1.2rem 6rem; }
+    article h1 { font-size: 1.45rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<a class="back" href="../index.html">← 返回首页</a>
+<article>
+<h1 id="giffgaff-英国-sim-卡申请指南">giffgaff 英国 SIM 卡申请指南</h1>
+<time datetime="2026-06-24">2026-06-24</time>
+<h2 id="概述">概述</h2>
+<p>本文介绍 giffgaff 英国 SIM 卡（未激活空白卡）的激活、首次充值、保号及日常管理方法。即使没有可用的海外 Visa / MasterCard，也可以通过充值券（Top-up Voucher）完成首次充值。自行激活和充值有助于降低成本，并更好地保护个人隐私。</p>
+<h3 id="适用场景">适用场景</h3>
+<ul>
+<li>出境旅行时使用英国号码</li>
+<li>注册需要海外手机号验证的服务（如 Codex、Claude Code、Gmail 等）</li>
+<li>长期保留一个可接收短信的海外号码</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong> 使用过程中请遵守所在地法律法规。</p>
+</blockquote>
+<h2 id="准备事项">准备事项</h2>
+<p>开始前请确认以下条件：</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />一张未激活的 giffgaff 空白 SIM 卡（背面印有 6 位激活码）</label></li>
+<li><label><input type="checkbox" />稳定的 Wi-Fi 网络（激活全程使用 Wi-Fi，<strong>暂不插卡</strong>）</label></li>
+<li><label><input type="checkbox" />一个常用邮箱，用于接收验证码和激活通知</label></li>
+<li><label><input type="checkbox" />首次充值方式（二选一）：</label>
+<ul>
+<li>可在 giffgaff 使用的 VISA / MasterCard 多币种信用卡</li>
+<li>一张 £10 充值券（16 位卡密）</li>
+</ul></li>
+<li><label><input type="checkbox" />建议使用浏览器无痕模式，避免缓存干扰</label></li>
+<li><label><input type="checkbox" />如不熟悉英文页面，可提前安装网页翻译插件，例如沉浸式翻译（免费可用）：<a href="https://immersivetranslate.com/zh-Hans/?via=yuzong" class="uri">https://immersivetranslate.com/zh-Hans/?via=yuzong</a></label></li>
+</ul>
+<h2 id="一激活新卡">一、激活新卡</h2>
+<h3 id="步骤-1输入激活码">步骤 1：输入激活码</h3>
+<p>访问 giffgaff 激活页面 <a href="https://www.giffgaff.com/activate" class="uri">https://www.giffgaff.com/activate</a>，输入 SIM 卡背面的 6 位激活码，点击 <strong>Activate your SIM</strong>。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEWtdWQAArLti.jpg" alt="giffgaff 激活页面：输入 6 位激活码" />
+<figcaption aria-hidden="true">giffgaff 激活页面：输入 6 位激活码</figcaption>
+</figure>
+<h3 id="步骤-2填写邮箱">步骤 2：填写邮箱</h3>
+<p>输入邮箱地址后点击 <strong>Next</strong>。后续验证码和激活通知均会发送至该邮箱，建议使用常用邮箱。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEXaTWIAAL9xj.jpg" alt="填写邮箱地址页面" />
+<figcaption aria-hidden="true">填写邮箱地址页面</figcaption>
+</figure>
+<h3 id="步骤-3验证邮箱">步骤 3：验证邮箱</h3>
+<p>查收邮件中的验证码，填写后点击 <strong>Confirm</strong>。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEYGZW0AA131U.jpg" alt="输入邮箱验证码页面" />
+<figcaption aria-hidden="true">输入邮箱验证码页面</figcaption>
+</figure>
+<h3 id="步骤-4设置密码">步骤 4：设置密码</h3>
+<p>按页面提示的密码规则设置登录密码，点击 <strong>Register</strong>。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEYwTXUAANhrm.jpg" alt="设置账户密码页面" />
+<figcaption aria-hidden="true">设置账户密码页面</figcaption>
+</figure>
+<h3 id="步骤-5跳过附加套餐">步骤 5：跳过附加套餐</h3>
+<p>页面会询问是否购买额外套餐。选择 <strong>No, thanks</strong>，然后点击 <strong>Continue</strong>。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEZaxWgAAPYcH.jpg" alt="选择 No, thanks 跳过附加套餐" />
+<figcaption aria-hidden="true">选择 No, thanks 跳过附加套餐</figcaption>
+</figure>
+<h3 id="步骤-6选择付费模式">步骤 6：选择付费模式</h3>
+<p>将页面滚动至底部，选择 <strong>Pay as you go</strong>（随用即付，无月租），点击 <strong>Continue</strong>。</p>
+<blockquote>
+<p><strong>注意：</strong> 请勿选择月付套餐。</p>
+</blockquote>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEaEnXEAAmMNX.jpg" alt="选择 Pay as you go 付费模式" />
+<figcaption aria-hidden="true">选择 Pay as you go 付费模式</figcaption>
+</figure>
+<h3 id="步骤-7选择首次充值方式">步骤 7：选择首次充值方式</h3>
+<p>根据自身条件选择以下方式之一：</p>
+<ul>
+<li><strong>信用卡充值</strong>：选择 £10 金额，点击 <strong>Pay now</strong>，使用带 VISA 或 MasterCard 标识的多币种信用卡支付。</li>
+<li><strong>充值券充值</strong>：选择 <strong>Or redeem a top-up voucher</strong>，输入 16 位充值卡密完成充值。</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ol type="1">
+<li>国内发行的大部分 Visa 卡（如招商银行信用卡）无法完成充值；</li>
+<li>同一张卡多次充值后，可能出现无法继续充值的情况。</li>
+</ol>
+
+</blockquote>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEavVWQAAhrLV.jpg" alt="首次充值方式选择页面" />
+<figcaption aria-hidden="true">首次充值方式选择页面</figcaption>
+</figure>
+<h3 id="步骤-8填写个人信息">步骤 8：填写个人信息</h3>
+<h4 id="方式一使用充值券">方式一：使用充值券</h4>
+<p>按表单要求填写姓名和地址，并输入充值券兑换码。填写地址时，可在 <strong>Postcode</strong> 栏输入邮编，从系统给出的下拉列表中选择对应地址自动填入，确认无误后提交。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEbcDXAAAuaZk.jpg" alt="充值券方式：填写个人信息与兑换码" />
+<figcaption aria-hidden="true">充值券方式：填写个人信息与兑换码</figcaption>
+</figure>
+<h4 id="方式二使用-visa-mastercard">方式二：使用 Visa / MasterCard</h4>
+<p>按表单要求填写英文姓名和地址（同样可通过 <strong>Postcode</strong> 栏查询并选择地址自动填入），点击 <strong>Continue</strong>。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEcMAWkAAj0Ou.jpg" alt="信用卡方式：填写姓名与地址" />
+<figcaption aria-hidden="true">信用卡方式：填写姓名与地址</figcaption>
+</figure>
+<h3 id="步骤-9完成支付仅限信用卡方式">步骤 9：完成支付（仅限信用卡方式）</h3>
+<p>输入信用卡信息，勾选 <strong>I understand and agree</strong>，点击 <strong>Place order</strong>。</p>
+<blockquote>
+<p><strong>说明：</strong> 使用充值券激活时不会出现此步骤，无需填写信用卡信息。</p>
+</blockquote>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEc7UXYAAVBQi.jpg" alt="填写信用卡信息并提交订单" />
+<figcaption aria-hidden="true">填写信用卡信息并提交订单</figcaption>
+</figure>
+<h3 id="步骤-10获取号码">步骤 10：获取号码</h3>
+<p>支付完成后，页面显示的号码即为您的英国手机号（国家代码 +44）。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEdm6W0AASzX4.jpg" alt="激活完成页面显示英国手机号" />
+<figcaption aria-hidden="true">激活完成页面显示英国手机号</figcaption>
+</figure>
+<p>若激活进度较慢，该页面可能暂不显示号码。此时可点击左上角返回主页查看号码，余额可能暂时不显示，请耐心等待。</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEeWoWYAA3sxL.jpg" alt="个人主页已显示号码但余额暂未显示" />
+<figcaption aria-hidden="true">个人主页已显示号码但余额暂未显示</figcaption>
+</figure>
+<h3 id="步骤-11确认激活完成">步骤 11：确认激活完成</h3>
+<p>返回个人主页：</p>
+<ul>
+<li><strong>已显示余额（£10）</strong>：激活成功，此时插入 SIM 卡，等待出现信号即可。</li>
+<li><strong>尚未显示余额</strong>：仍在激活中，通常需要 30 分钟至数小时，最长不超过 24 小时。激活成功后官方会发送邮件通知。</li>
+</ul>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEfDuW0AALfXS.jpg" alt="个人主页显示 £10 余额表示激活成功" />
+<figcaption aria-hidden="true">个人主页显示 £10 余额表示激活成功</figcaption>
+</figure>
+<blockquote>
+<p><strong>号码格式说明：</strong> 日常使用时去掉号码开头的 0，例如 +447547xxxx33；登录官网或 App 时需保留开头的 0，例如 07547xxxx33。</p>
+</blockquote>
+<h2 id="二资费说明">二、资费说明</h2>
+<p>在中国境内漫游使用 giffgaff 的资费如下：</p>
+<figure>
+<img src="https://pbs.twimg.com/media/HLlEfnuWsAAtjUv.png" alt="giffgaff 中国境内漫游资费表" />
+<figcaption aria-hidden="true">giffgaff 中国境内漫游资费表</figcaption>
+</figure>
+<ul>
+<li><strong>购买流量</strong>：在手机端登录 giffgaff App，在主页顶部 <strong>My data</strong> 中选择所在国家（如中国）后购买。</li>
+<li><strong>其他国家/地区资费</strong>：请查询 <a href="https://www.giffgaff.com/roaming-charges">giffgaff 漫游资费页面</a>。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong> 资费可能随时调整，请以官方页面为准。</p>
+</blockquote>
+<h2 id="三保号规则">三、保号规则</h2>
+<p>每 180 天内至少产生一次余额变动（消费或充值），即可自动续期 180 天。</p>
+<table>
+<thead>
+<tr>
+<th>可触发续期的操作</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送短信</td>
+<td>发送一条即可</td>
+</tr>
+<tr>
+<td>使用移动数据</td>
+<td>使用一次移动数据上网</td>
+</tr>
+<tr>
+<td>拨打电话</td>
+<td>不包括紧急服务和官方客服热线</td>
+</tr>
+<tr>
+<td>充值</td>
+<td>充值一次话费</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>注意：</strong> 若长时间无余额变动，giffgaff 会发送警告邮件；收到警告后仍未处理，号码将被注销。</p>
+</blockquote>
+<h2 id="四短信与通话号码格式">四、短信与通话号码格式</h2>
+<p>格式规则：<strong>+</strong> + <strong>国家代码</strong> + <strong>号码</strong></p>
+<p>以对方英国号码 8888888888 为例：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>系统</th>
+<th>输入格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发短信</td>
+<td>iPhone</td>
+<td><strong>00448888888888</strong></td>
+</tr>
+<tr>
+<td>发短信</td>
+<td>Android</td>
+<td><strong>+448888888888</strong></td>
+</tr>
+<tr>
+<td>打电话</td>
+<td>通用</td>
+<td><strong>+448888888888</strong></td>
+</tr>
+</tbody>
+</table>
+<p>在拨号键盘上长按数字 0 即可输入 <strong>+</strong> 号。</p>
+<blockquote>
+<p><strong>注意：</strong> 不建议使用该号码联系中国大陆 +86 号码。国内运营商通常默认拦截境外来电和短信，且可能触发反诈风控，导致号码被停机。</p>
+</blockquote>
+<h2 id="五常用操作">五、常用操作</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>操作</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查询本机号码</td>
+<td>编辑短信 <strong>number</strong> 发送至 <strong>2020</strong>，通常 30 秒至 2 分钟内收到回复</td>
+</tr>
+<tr>
+<td>查询余额</td>
+<td>登录 <a href="https://www.giffgaff.com">giffgaff 官网</a> 或 App 查看</td>
+</tr>
+<tr>
+<td>后续充值</td>
+<td>见下文 5.1</td>
+</tr>
+<tr>
+<td>修改邮箱</td>
+<td>见下文 5.2</td>
+</tr>
+<tr>
+<td>修改密码</td>
+<td>见下文 5.3</td>
+</tr>
+<tr>
+<td>更换号码</td>
+<td>见下文 5.4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="后续充值">5.1 后续充值</h3>
+<ol type="1">
+<li>登录 <a href="https://www.giffgaff.com">giffgaff 官网</a>，点击 <strong>Add credit</strong>。</li>
+<li>选择金额和支付方式，点击 <strong>Continue</strong>，按页面提示完成支付。</li>
+</ol>
+<blockquote>
+<p><strong>说明：</strong> 该方式需使用 VISA 或 MasterCard 信用卡。</p>
+</blockquote>
+<h3 id="修改邮箱">5.2 修改邮箱</h3>
+<ul>
+<li><strong>可登录时</strong>：访问 <a href="https://www.giffgaff.com/auth/change-email">修改邮箱页面</a> 直接修改。</li>
+<li><strong>无法登录时</strong>：在登录页面点击 <strong>Change</strong>，通过邮箱验证完成修改。</li>
+</ul>
+<h3 id="修改密码">5.3 修改密码</h3>
+<ul>
+<li><strong>可登录时</strong>：登录后依次点击 <strong>Security</strong> → <strong>Change password</strong>。</li>
+<li><strong>无法登录时</strong>：在登录页面点击 <strong>Forgot your password?</strong>，输入手机号（开头带 0）重置密码。</li>
+</ul>
+<h3 id="更换号码">5.4 更换号码</h3>
+<p>如对系统分配的号码不满意（或该号码存在历史使用记录），可申请更换，新号码随机分配：</p>
+<ol type="1">
+<li>打开 <a href="https://www.giffgaff.com/profile/details/getnumber">换号页面</a>，点击 <strong>Get a new giffgaff number</strong>。</li>
+<li>输入密码，点击 <strong>Change my number</strong>。</li>
+<li>等待系统跳转至个人信息页面，新号码即会显示。</li>
+</ol>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ul>
+<li>北京时间 5:30–13:00 期间无法更换号码；</li>
+<li>新号码和余额最长需要 4 小时完成更新；</li>
+<li>操作全程请使用 Wi-Fi；</li>
+<li>每个账户最多可更换 2 次号码，第二次需与第一次间隔 24 小时。</li>
+</ul>
+</blockquote>
+<h2 id="六esim-相关操作">六、eSIM 相关操作</h2>
+<h3 id="实体卡转为-esim">6.1 实体卡转为 eSIM</h3>
+<p><strong>前提条件：</strong></p>
+<ul>
+<li>手机支持 eSIM（如海外版 iPhone）</li>
+<li>已安装 <a href="https://apps.apple.com/cn/app/giffgaff/id571246020">giffgaff App</a> 并连接 Wi-Fi</li>
+<li>操作时段：北京时间 12:30 至次日 4:30</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol type="1">
+<li>登录 App，依次点击 <strong>Account</strong> → <strong>SIM</strong> → <strong>Replace my SIM</strong> → <strong>Switch to a new eSIM</strong>。</li>
+<li>勾选 <strong>I understand and accept this</strong>，点击 <strong>Start the switch</strong>。</li>
+<li>输入短信验证码，点击 <strong>Confirm</strong>。</li>
+<li>再次勾选并点击 <strong>Start the switch</strong>。</li>
+<li>点击 <strong>Install eSIM</strong>，在弹出的激活提示中依次点击「激活」→「继续」。</li>
+<li>套餐类型选择「语音和数据」，依次点击「继续」→「完成」→ <strong>Close</strong>。</li>
+<li>打开手机「设置」→「蜂窝网络」→ 选择该 SIM 卡 → 开启「启用此号码」，等待出现信号（通常 1 小时内，最长不超过 24 小时）。</li>
+</ol>
+<blockquote>
+<p><strong>提示：</strong> 如流程有变化，请以 <a href="https://www.giffgaff.com/help/articles/how-do-i-get-an-esim-on-giffgaff">giffgaff 官方 eSIM 说明</a> 为准。</p>
+</blockquote>
+<h3 id="esim-转回实体卡">6.2 eSIM 转回实体卡</h3>
+<p>操作时段同上（北京时间 12:30 至次日 4:30）：</p>
+<ol type="1">
+<li>准备一张未激活的 giffgaff 空白 SIM 卡。</li>
+<li>通过网页登录官网，进入 <a href="https://www.giffgaff.com/profile/details">个人资料和设置</a>，找到 <strong>Replace my SIM</strong>，点击 <strong>Activate your SIM</strong>。</li>
+<li>输入新卡背面的 6 位激活码。</li>
+<li>点击 <strong>Yes, I want to replace my SIM</strong>。</li>
+<li>点击 <strong>Yes I’m sure</strong>，等待转换完成（通常不到 1 小时，最长 24 小时）。</li>
+</ol>
+<blockquote>
+<p><strong>官方说明：</strong> <a href="https://help.giffgaff.com/en/articles/240706-can-i-switch-back-to-a-physical-sim-card-from-an-esim">Can I switch back to a physical SIM card from an eSIM</a></p>
+</blockquote>
+<h2 id="七wi-fi-callingwi-fi-通话">七、Wi-Fi Calling（Wi-Fi 通话）</h2>
+<p>开启 Wi-Fi Calling 后资费更低：短信 £0.08/条，通话 £0.03/分钟。</p>
+<p><strong>开启方法（以 iPhone 为例）：</strong></p>
+<ol type="1">
+<li>使用全局英国 IP 网络环境。</li>
+<li>打开「设置」→「App」→「电话」→ 开启「Wi-Fi 通话」。</li>
+<li>打开「设置」→「蜂窝网络」→ 选择该号码 →「语音与数据」→ 选择 4G 或 5G。</li>
+</ol>
+<blockquote>
+<p><strong>官方说明（含视频演示）：</strong> <a href="https://help.giffgaff.com/en/articles/258841-wifi-calling-and-volte">WiFi Calling and VoLTE</a></p>
+</blockquote>
+<h2 id="八常见问题">八、常见问题</h2>
+<p><strong>问：激活后页面没有显示号码怎么办？</strong></p>
+<p>答：激活较慢时属正常现象。可返回主页查看号码；余额显示 £10 即表示激活成功，通常需 30 分钟至数小时，最长 24 小时。</p>
+<p><strong>问：国内信用卡充值失败怎么办？</strong></p>
+<p>答：据原作者实测，国内发行的大部分 Visa 卡无法充值，可改用充值券（<strong>Or redeem a top-up voucher</strong>）完成充值。</p>
+<p><strong>问：登录时号码应如何填写？</strong></p>
+<p>答：登录官网或 App 时号码需保留开头的 0（如 07547xxxx33）；日常对外提供号码时使用 +44 格式并去掉开头的 0。</p>
+<p><strong>问：多久不用号码会被注销？</strong></p>
+<p>答：180 天内无任何余额变动，且收到警告邮件后仍未处理，号码将被注销。</p>
+<h2 id="参考链接">参考链接</h2>
+<h3 id="官方链接">官方链接</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>用途</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>激活 SIM 卡</td>
+<td><a href="https://www.giffgaff.com/activate" class="uri">https://www.giffgaff.com/activate</a></td>
+</tr>
+<tr>
+<td>官网首页</td>
+<td><a href="https://www.giffgaff.com" class="uri">https://www.giffgaff.com</a></td>
+</tr>
+<tr>
+<td>漫游资费</td>
+<td><a href="https://www.giffgaff.com/roaming-charges" class="uri">https://www.giffgaff.com/roaming-charges</a></td>
+</tr>
+<tr>
+<td>修改邮箱</td>
+<td><a href="https://www.giffgaff.com/auth/change-email" class="uri">https://www.giffgaff.com/auth/change-email</a></td>
+</tr>
+<tr>
+<td>更换号码</td>
+<td><a href="https://www.giffgaff.com/profile/details/getnumber" class="uri">https://www.giffgaff.com/profile/details/getnumber</a></td>
+</tr>
+<tr>
+<td>个人资料和设置</td>
+<td><a href="https://www.giffgaff.com/profile/details" class="uri">https://www.giffgaff.com/profile/details</a></td>
+</tr>
+<tr>
+<td>giffgaff App（iOS）</td>
+<td><a href="https://apps.apple.com/cn/app/giffgaff/id571246020" class="uri">https://apps.apple.com/cn/app/giffgaff/id571246020</a></td>
+</tr>
+<tr>
+<td>eSIM 说明</td>
+<td><a href="https://www.giffgaff.com/help/articles/how-do-i-get-an-esim-on-giffgaff" class="uri">https://www.giffgaff.com/help/articles/how-do-i-get-an-esim-on-giffgaff</a></td>
+</tr>
+<tr>
+<td>eSIM 转回实体卡</td>
+<td><a href="https://help.giffgaff.com/en/articles/240706-can-i-switch-back-to-a-physical-sim-card-from-an-esim" class="uri">https://help.giffgaff.com/en/articles/240706-can-i-switch-back-to-a-physical-sim-card-from-an-esim</a></td>
+</tr>
+<tr>
+<td>Wi-Fi Calling 与 VoLTE</td>
+<td><a href="https://help.giffgaff.com/en/articles/258841-wifi-calling-and-volte" class="uri">https://help.giffgaff.com/en/articles/258841-wifi-calling-and-volte</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="工具">工具</h3>
+<ul>
+<li>沉浸式翻译（浏览器翻译插件）：<a href="https://immersivetranslate.com/zh-Hans/?via=yuzong" class="uri">https://immersivetranslate.com/zh-Hans/?via=yuzong</a></li>
+</ul>
+</article>
+</div>
+</body>
+</html>

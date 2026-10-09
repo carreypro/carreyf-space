@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uniswap 组 LP 新手教程 — carrey</title>
+<meta name="description" content="Uniswap 组 LP 新手教程：从选择资金池、费率档位、价格区间到头寸管理。">
+<link rel="icon" type="image/svg+xml" href="../icons/cf-favicon.svg">
+<style>
+  body { background: oklch(0.968 0.004 85); color: oklch(0.24 0.008 80); font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Source Han Sans SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; font-size: 14.4px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  ::selection { background: oklch(0.24 0.008 80 / 0.12); }
+  .page { max-width: 42rem; margin: 0 auto; padding: 2.5rem 1.5rem 8rem; }
+  a { color: oklch(0.24 0.008 80); font-weight: 500; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; text-decoration-color: oklch(0.24 0.008 80 / 0.45); word-break: break-word; }
+  a:hover { text-decoration-color: oklch(0.24 0.008 80); }
+  .back { display: inline-block; color: oklch(0.60 0.008 80); text-decoration: none; font-size: 0.92rem; margin-bottom: 3rem; }
+  .back:hover { color: oklch(0.24 0.008 80); }
+  time { display: block; color: oklch(0.60 0.008 80); font-size: 0.85rem; margin-bottom: 2.5rem; }
+  article h1 { font-size: 1.2rem; font-weight: 400; line-height: 1.5; letter-spacing: 0.01em; margin: 0 0 0.4rem; }
+  article h2 { font-size: 1rem; font-weight: 500; margin: 2.8rem 0 0.9rem; }
+  article h3 { font-size: 1rem; font-weight: 500; margin: 2.2rem 0 0.7rem; }
+  article p { margin: 0 0 1.2em; }
+  article ul, article ol { margin: 0 0 1.2em; padding-left: 1.6em; }
+  article li { margin-bottom: 0.35em; }
+  article li > p { margin: 0; }
+  article blockquote { margin: 1.6rem 0; padding: 1rem 1.3rem; background: oklch(0.952 0.005 85); border-radius: 14px; border: 1px solid oklch(0.88 0.006 85); }
+  article blockquote p { margin: 0.4em 0; color: oklch(0.42 0.008 80); }
+  article blockquote ul { margin-bottom: 0; }
+  article table { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: 0.92rem; }
+  article th, article td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid oklch(0.88 0.006 85); vertical-align: top; }
+  article th { color: oklch(0.60 0.008 80); font-weight: 400; }
+  article hr { border: none; border-top: 1px solid oklch(0.88 0.006 85); margin: 3rem 0; }
+  article code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; background: oklch(0.952 0.005 85); border-radius: 6px; padding: 0.1em 0.4em; }
+  .image-placeholder { display: flex; align-items: center; min-height: 5.5rem; margin: 1.6rem 0; padding: 1rem 1.25rem; border: 1px dashed oklch(0.78 0.006 85); border-radius: 12px; background: oklch(0.958 0.004 85); }
+  .image-placeholder figcaption { color: oklch(0.52 0.008 80); font-size: 0.88rem; }
+  @media (max-width: 540px) {
+    body { font-size: 14px; }
+    .page { padding: 1.6rem 1.2rem 6rem; }
+    article h1 { font-size: 1.45rem; }
+    article table { display: block; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<a class="back" href="../index.html">← 返回首页</a>
+<article>
+<h1>Uniswap 组 LP 新手教程</h1>
+<time datetime="2026-09-17">2026-09-17</time>
+<h2 id="概述">概述</h2>
+<p>本文介绍在 Uniswap 网页端创建流动性头寸（LP，即 Liquidity
+Provider，流动性提供者）的完整界面流程：进入流动性池页面、新建头寸、选择资金池与费率档位、设置价格区间、输入存入数量。</p>
+<p><strong>演示边界说明：</strong>
+本次演示全程未连接钱包、未签名、未提交任何链上交易，仅走到"连接钱包"这一步为止。因此截图展示的是界面流程，最后的链上确认步骤以文字说明代替，未创建任何真实头寸、未花费任何资金。</p>
+<h3 id="适用场景">适用场景</h3>
+<ul>
+<li>长期持有两种代币（如 ETH + USDC），想赚取交易手续费分成</li>
+<li>想在特定价格区间内提供流动性，提高资金效率</li>
+<li>学习 DeFi 集中流动性（Concentrated Liquidity）机制</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong> 组 LP
+不是"存钱生息"。收益来自交易手续费分成，同时承担无常损失、智能合约风险和
+Gas 成本。本文仅为操作说明，不构成投资建议。</p>
+</blockquote>
+<h2 id="准备事项">准备事项</h2>
+<p>开始前请确认以下条件：</p>
+<ul>
+<li>一个以太坊兼容钱包（MetaMask / Rabby / Coinbase Wallet
+等），已安装并<strong>备份好助记词</strong></li>
+<li>钱包中有两种代币（本文以 ETH + USDC 为例），以及少量 ETH 用于支付
+Gas</li>
+<li>桌面浏览器 + 稳定网络</li>
+<li>只认准官网
+<strong>app.uniswap.org</strong>，谨防钓鱼网站；任何索要助记词的页面都是骗局</li>
+</ul>
+<h3 id="核心概念速览">核心概念速览</h3>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>一句话说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>资金池（Pool）</td>
+<td>两种代币组成的交易资金池，交易者在其中兑换</td>
+</tr>
+<tr>
+<td>费率档位（Fee Tier）</td>
+<td>每笔交易抽取的手续费比例，如 0.3%</td>
+</tr>
+<tr>
+<td>价格区间（Price Range）</td>
+<td>你的资金在哪个价格范围内参与做市（v3/v4 的集中流动性）</td>
+</tr>
+<tr>
+<td>无常损失（Impermanent Loss）</td>
+<td>价格偏离存入时价格，撤出价值低于单纯持有的差额</td>
+</tr>
+<tr>
+<td>APR</td>
+<td>年化收益率（截图为演示时点的快照，不代表未来收益）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="一进入流动性池页面">一、进入流动性池页面</h2>
+<h3 id="步骤-1打开官网点击流动性池">步骤
+1：打开官网，点击"流动性池"</h3>
+<p>访问 Uniswap 应用，顶部导航栏点击
+<strong>流动性池</strong>（英文界面为 Pools）。</p>
+<figure class="image-placeholder"><figcaption>图 1：Uniswap 应用首页</figcaption></figure>
+<h3 id="步骤-2浏览资金池列表">步骤 2：浏览资金池列表</h3>
+<p>页面标题为
+<strong>"提供流动性，赚取费用"</strong>，副标题"为最大的流动性协议做贡献并获得奖励"。下方有"创建头寸
+/ 创建资金池 / 发布代币"按钮，以及"热门资金池"表格（含总锁仓量、1 天 /
+30 天交易量、资金池 APR 等列）。</p>
+<figure class="image-placeholder"><figcaption>图 2：流动性池页面：热门资金池表格</figcaption></figure>
+<blockquote>
+<p><strong>说明：</strong> 表格中的 APR
+和交易量是实时数据。挑选资金池时重点看"交易量 /
+锁仓量"比率——交易越活跃，手续费收入越高。</p>
+</blockquote>
+<h3 id="步骤-3点击创建头寸">步骤 3：点击"创建头寸"</h3>
+<p>点击 <strong>创建头寸</strong>（New
+position）进入新建流程。未连接钱包时会弹出钱包选择窗口（WalletConnect /
+MetaMask / Coinbase Wallet / Binance Wallet
+等选项），演示中直接关闭，未连接任何钱包。</p>
+<figure class="image-placeholder"><figcaption>图 3：新建头寸初始页与钱包连接弹窗（未连接）</figcaption></figure>
+<blockquote>
+<p><strong>注意：</strong> 本文演示全程未连接钱包。实际组 LP
+时需要先连接钱包，并在钱包中确认后续每一笔交易。</p>
+</blockquote>
+<h2 id="二选择资金池与费率档位">二、选择资金池与费率档位</h2>
+<p>新建头寸分两步：<strong>1 选择资金池</strong> / <strong>2
+设置价格区间和存入金额</strong>。</p>
+<h3 id="步骤-4选择代币对">步骤 4：选择代币对</h3>
+<p>在"选择代币对"中选择两种代币，本文以 ETH / USDC 为例。</p>
+<h3 id="步骤-5选择资金池版本与费率档位">步骤
+5：选择资金池版本与费率档位</h3>
+<p>同一代币对可能有多个资金池（v2 / v3 /
+v4，不同费率），各池的锁仓量、交易量、APR 都不同：</p>
+<figure class="image-placeholder"><figcaption>图 4：第 1 步"选择资金池"：ETH/USDC 各版本与费率列表</figcaption></figure>
+<p>常见费率档位（v3）：</p>
+<table>
+<thead>
+<tr>
+<th>费率</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.01%</td>
+<td>稳定币之间等极低波动对</td>
+</tr>
+<tr>
+<td>0.05%</td>
+<td>主流币对</td>
+</tr>
+<tr>
+<td>0.3%</td>
+<td>常见默认档</td>
+</tr>
+<tr>
+<td>1%</td>
+<td>高波动 / 长尾代币</td>
+</tr>
+</tbody>
+</table>
+<p>此外还有 v2·0.3%（经典全区间做市）和 v4
+动态费率（随市场浮动）等选项。</p>
+<blockquote>
+<p><strong>注意：</strong> 费率高不等于收益高。收益 = 费率 × 交易量 ×
+你的份额占比，挑选时以页面显示的交易量和 APR 为准，且历史 APR
+不代表未来收益。</p>
+</blockquote>
+<p>演示截图时 ETH/USDC（v3·0.3%）池数据：当前价格 2,497.85
+USDC/WETH；总锁仓量约 US$4449.5万；24 小时交易量约 US$1630.2万；24
+小时费用约 US$4.1万；1 天 APR 33.42%（均为演示时点快照）。</p>
+<h2 id="三设置价格区间">三、设置价格区间</h2>
+<h3 id="步骤-6选择全区间或自定义区间">步骤
+6：选择"全区间"或"自定义区间"</h3>
+<p>两个标签页：<strong>全区间</strong> /
+<strong>自定义区间</strong>（默认选中自定义区间）。</p>
+<ul>
+<li><strong>自定义区间</strong>：将流动性集中在特定价格区间内，提高资金效率和手续费收益，但需要更主动的管理。页面配有价格图表（可切换
+1 天 / 1 周 / 1 月 / 1 年 / 全部时间）和最低 /
+最高价格输入框。页面说明原文：<em>"自定义区间可将流动性集中在特定价格区间内，提高资金效率和费用收益，但需要更主动的管理。"</em></li>
+<li><strong>全区间</strong>：在所有价格参与做市，操作简单。页面明确提示：<em>"提供全区间流动性可确保在所有价格区间持续参与市场，操作简单，但可能带来更高的无常损失。"</em></li>
+</ul>
+<figure class="image-placeholder"><figcaption>图 5：第 2
+步"设置价格区间"：自定义区间、价格图表与最低/最高价输入框</figcaption></figure>
+<figure class="image-placeholder"><figcaption>图 6：全区间模式：最低价 0、最高价 ∞，及无常损失风险提示</figcaption></figure>
+<p>价格策略快捷卡片（四选一快速设置）：</p>
+<ul>
+<li><strong>稳定 ±1.82%</strong>（适合稳定币或低波动代币对）</li>
+<li><strong>宽幅 −50% – +100%</strong>（适合高波动代币对）</li>
+<li><strong>单边下限 −50%</strong>（价格下跌时提供流动性）</li>
+<li><strong>单边上限 +100%</strong>（价格上涨时提供流动性）</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong>
+这是新手最容易踩坑的一步。区间越窄，资金效率越高，但价格一旦跑出区间就停止赚取手续费，且无常损失更大。新手建议从全区间或宽幅开始，先跑通全流程。</p>
+</blockquote>
+<h2 id="四输入存入数量">四、输入存入数量</h2>
+<h3 id="步骤-7填写存入代币数量">步骤 7：填写存入代币数量</h3>
+<p>在"存入代币"区输入任意一种代币的数量，另一种会按当前价格自动计算。例如输入
+<strong>0.01 ETH</strong>（约 US$24.97），自动算出 <strong>24.999462
+USDC</strong>（约 US$25.00）。</p>
+<figure class="image-placeholder"><figcaption>图 7：存入代币区域（未填写金额）</figcaption></figure>
+<figure class="image-placeholder"><figcaption>图 8：输入 0.01 ETH 后，USDC 数量自动计算得出</figcaption></figure>
+<blockquote>
+<p><strong>说明：</strong></p>
+<ol type="1">
+<li>"以 ETH 添加"开关默认开启；</li>
+<li>页面显示的美元估值仅供参考，以链上实际成交为准；</li>
+<li>此时页面底部按钮仍为
+<strong>"连接钱包"</strong>——无钱包状态下流程到此为止，没有预览 /
+确认页，这也是本次演示的安全边界。</li>
+</ol>
+</blockquote>
+<h2
+id="五连接钱包并确认本文未执行">五、连接钱包并确认（本文未执行）</h2>
+<p>连接钱包后，实际组 LP 的后续步骤通常为：</p>
+<ol type="1">
+<li>点击供应 / 添加，在钱包中<strong>授权（Approve）</strong>两种代币；</li>
+<li>预览头寸（价格区间、数量、预估 Gas）；</li>
+<li>在钱包中<strong>确认交易</strong>并支付 Gas，等待链上确认；</li>
+<li>头寸出现在"你的头寸"列表中，开始累积手续费。</li>
+</ol>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ol type="1">
+<li><strong>演示到此为止，未执行这一步，未创建任何真实头寸，未花费任何资金。</strong></li>
+<li>授权、存入、收取手续费、撤出，每一步都是独立的链上交易，都要付
+Gas（以太坊主网可能较贵）。小额资金操作前请先估算 Gas
+占比，避免"赚的手续费不够付 Gas"。</li>
+</ol>
+</blockquote>
+<h2 id="六头寸管理创建后">六、头寸管理（创建后）</h2>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查看头寸</td>
+<td>流动性池页 → 你的头寸（需先连接钱包）</td>
+</tr>
+<tr>
+<td>收取手续费</td>
+<td>进入头寸详情 → Collect fees（需付 Gas）</td>
+</tr>
+<tr>
+<td>增加 / 减少流动性</td>
+<td>头寸详情 → Add / Remove</td>
+</tr>
+<tr>
+<td>完全撤出</td>
+<td>Remove → 选择 100% → 钱包确认</td>
+</tr>
+</tbody>
+</table>
+<h2 id="七费用与收益说明">七、费用与收益说明</h2>
+<ul>
+<li><strong>手续费收入</strong>：按你在池中的份额实时累积，可随时收取（每次收取付一次
+Gas）。</li>
+<li><strong>Gas
+成本</strong>：授权、存入、收取、撤出各需一笔交易，主网拥堵时费用较高；也可以考虑
+Arbitrum / Base 等 Layer 2 网络（Uniswap 均支持，Gas 便宜很多）。</li>
+<li><strong>无常损失</strong>：举个例子——存入时 ETH = 2,500 USDC，你存入
+1 ETH + 2,500 USDC（价值 $5,000）。若 ETH 涨到 5,000
+USDC，池子自动再平衡后你的份额约变为 0.707 ETH + 3,535 USDC（价值约
+$7,071）；而单纯持有则是 1 ETH + 2,500 USDC = $7,500。差额约 $429（约
+5.7%）就是无常损失，需要用手续费收入去覆盖。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong> 震荡行情对 LP
+友好（赚手续费、价格来回不大）；单边大涨或大跌对 LP
+不利（无常损失放大，还可能跑出价格区间）。</p>
+</blockquote>
+<h2 id="八常见问题">八、常见问题</h2>
+<p><strong>问：组 LP 一定赚钱吗？</strong></p>
+<p>答：不一定。手续费收入能覆盖"无常损失 + Gas
+成本"才是净赚。建议先小额试水，跑通收取、撤出全流程再考虑加仓。</p>
+<p><strong>问：价格跑出我设的区间会怎样？</strong></p>
+<p>答：头寸变为"非活跃"状态，不再赚取手续费，但本金仍在，可随时撤出；价格回到区间内会自动重新激活。</p>
+<p><strong>问：v2 / v3 / v4 有什么区别？</strong></p>
+<p>答：v2 是经典全区间做市（x × y = k）；v3
+引入集中流动性和多费率档位；v4 在 v3 基础上支持动态费率与 Hooks
+扩展。新手从 v3 主流资金池开始即可。</p>
+<p><strong>问：为什么演示最后一步停在"连接钱包"？</strong></p>
+<p>答：因为全程未连接钱包。无钱包状态下只能浏览界面流程，无法进入预览 /
+确认页，也无法创建真实头寸——这正是本次演示刻意保持的安全边界。</p>
+<p><strong>问：稳定币对（如 USDC/USDT）组 LP 风险小吗？</strong></p>
+<p>答：无常损失很小，但仍有脱钩风险与智能合约风险，且收益率通常较低。没有"无风险"的
+LP。</p>
+<p><strong>问：最重要的安全事项是什么？</strong></p>
+<p>答：三条：1）只用
+app.uniswap.org，检查域名，谨防钓鱼网站；2）绝不在任何网页输入助记词 /
+私钥；3）连接钱包后仔细核对钱包弹窗中的交易内容再确认。</p>
+<h2 id="参考链接">参考链接</h2>
+<h3 id="官方链接">官方链接</h3>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uniswap 应用（组 LP 入口）</td>
+<td><a href="https://app.uniswap.org">https://app.uniswap.org</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>提示：</strong>
+官方文档与帮助中心可从应用内链接进入，请以应用内实际链接为准。</p>
+</blockquote>
+</article>
+</div>
+</body>
+</html>
+

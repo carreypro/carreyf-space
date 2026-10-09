@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kline Trading Plan Preview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: oklch(0.975 0.005 80);
+      --panel: oklch(0.94 0.007 80);
+      --ink: oklch(0.23 0.012 75);
+      --muted: oklch(0.55 0.012 75);
+      --line: oklch(0.86 0.01 80);
+      --up: oklch(0.58 0.14 150);
+      --down: oklch(0.58 0.15 25);
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      align-items: center;
+      gap: 60px;
+      padding: 72px 82px;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font: 600 19px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 66px;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .summary {
+      max-width: 420px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 25px;
+      line-height: 1.45;
+    }
+
+    .board {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      box-shadow: 0 24px 65px color-mix(in oklch, var(--ink) 9%, transparent);
+    }
+
+    .board-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--line);
+      font: 600 17px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .score {
+      color: var(--up);
+      font-size: 22px;
+    }
+
+    .chart {
+      display: block;
+      width: 100%;
+      height: 270px;
+      background: var(--panel);
+    }
+
+    .plan {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .metric {
+      padding: 20px 22px 22px;
+    }
+
+    .metric + .metric { border-left: 1px solid var(--line); }
+
+    .metric span {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .metric strong {
+      font: 600 22px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Agent skill · Python</p>
+    <h1>Kline<br>Trading Plan</h1>
+    <p class="summary">多周期技术分析，转换为有明确风险上限的交易计划。</p>
+  </main>
+
+  <section class="board" aria-label="K 线分析与风险计划示意图">
+    <div class="board-head"><span>BTC-USDT-SWAP · 4H</span><strong class="score">7.5 / 10</strong></div>
+    <svg class="chart" viewBox="0 0 620 270" role="img" aria-label="上升趋势 K 线图">
+      <g stroke="oklch(0.82 0.01 80)" stroke-width="1">
+        <path d="M0 54H620M0 108H620M0 162H620M0 216H620"/>
+        <path d="M124 0V270M248 0V270M372 0V270M496 0V270"/>
+      </g>
+      <path d="M24 220C78 208 102 232 151 193S230 180 270 153 341 166 390 123 477 117 514 78 574 80 605 44" fill="none" stroke="oklch(0.36 0.04 150)" stroke-width="4"/>
+      <g stroke-width="4">
+        <g stroke="var(--up)" fill="var(--up)"><path d="M72 206v-52"/><rect x="61" y="168" width="22" height="27" rx="2"/></g>
+        <g stroke="var(--down)" fill="var(--down)"><path d="M132 211v-57"/><rect x="121" y="164" width="22" height="32" rx="2"/></g>
+        <g stroke="var(--up)" fill="var(--up)"><path d="M192 190v-64"/><rect x="181" y="141" width="22" height="35" rx="2"/></g>
+        <g stroke="var(--up)" fill="var(--up)"><path d="M252 168v-67"/><rect x="241" y="116" width="22" height="38" rx="2"/></g>
+        <g stroke="var(--down)" fill="var(--down)"><path d="M312 167v-53"/><rect x="301" y="124" width="22" height="30" rx="2"/></g>
+        <g stroke="var(--up)" fill="var(--up)"><path d="M372 145V84"/><rect x="361" y="99" width="22" height="34" rx="2"/></g>
+        <g stroke="var(--up)" fill="var(--up)"><path d="M432 127V65"/><rect x="421" y="80" width="22" height="35" rx="2"/></g>
+        <g stroke="var(--down)" fill="var(--down)"><path d="M492 119V67"/><rect x="481" y="76" width="22" height="30" rx="2"/></g>
+        <g stroke="var(--up)" fill="var(--up)"><path d="M552 91V29"/><rect x="541" y="45" width="22" height="34" rx="2"/></g>
+      </g>
+    </svg>
+    <div class="plan">
+      <div class="metric"><span>Max risk</span><strong>1.0%</strong></div>
+      <div class="metric"><span>Margin cap</span><strong>20%</strong></div>
+      <div class="metric"><span>Net R:R</span><strong>2.4</strong></div>
+    </div>
+  </section>
+</body>
+</html>

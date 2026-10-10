@@ -305,22 +305,15 @@
     background-color: color-mix(in oklch, var(--paper-soft) 60%, transparent);
   }
   .product-icon {
-    display: inline-grid;
+    display: inline-flex;
     width: 1.28rem;
     height: 1.28rem;
-    place-items: center;
-    border-radius: 5px;
-    color: oklch(0.98 0.004 85);
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
     font-size: 0.68rem;
     line-height: 1;
   }
-  .product-icon--nicecard { background: oklch(0.62 0.17 292); }
-  .product-icon--kline { background: oklch(0.62 0.14 151); }
-  .product-icon--naraka { background: oklch(0.66 0.14 48); }
-  .product-icon--hutao { background: oklch(0.66 0.16 23); }
-  .product-icon--carrey { background: oklch(0.38 0.01 80); }
-  .product-icon--seedhub { background: oklch(0.60 0.13 238); }
-  .product-icon--5eplay { background: oklch(0.61 0.17 18); }
   .product-line {
     display: flex;
     align-items: baseline;

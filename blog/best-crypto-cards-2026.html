@@ -19,7 +19,7 @@
   article h2 { font-size: 1rem; font-weight: 500; margin: 2.8rem 0 0.9rem; }
   article h3 { font-size: 1rem; font-weight: 500; margin: 2.2rem 0 0.7rem; }
   article p { margin: 0 0 1.2em; }
-  article img { display: block; max-width: 100%; height: auto; border-radius: 12px; margin: 0 auto; }
+  article img { display: block; width: min(100%, 23rem); height: auto; border-radius: 12px; margin: 0 auto; }
   article figure { margin: 1.6rem 0 2rem; }
   article figcaption { margin-top: 0.65rem; color: oklch(0.52 0.008 80); font-size: 0.82rem; line-height: 1.5; text-align: center; }
   article ul, article ol { margin: 0 0 1.2em; padding-left: 1.6em; }
@@ -35,8 +35,9 @@
   article code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; background: oklch(0.952 0.005 85); border-radius: 6px; padding: 0.1em 0.4em; }
   @media (max-width: 540px) {
     body { font-size: 14px; }
-    .page { padding: 1.6rem 1.2rem 6rem; }
+    .page { padding: 1.6rem 1rem 6rem; }
     article h1 { font-size: 1.45rem; }
+    article figure img { width: min(100%, 20.4375rem); }
     article table { display: block; overflow-x: auto; }
   }
 </style>
@@ -47,19 +48,35 @@
 <article>
 <h1>2026 最佳加密货币返现卡对比：返现、费用与开卡奖励</h1>
 <time datetime="2026-10-06">2026-10-06</time>
-<h2 id="概述">概述</h2>
-<p>对比口径：免费档、每月 $1,000
-消费、美国境内消费场景；比较各卡的名义返现率、可能侵蚀返现的费用与限制，以及
-$1,000 消费下的实际返现。</p>
+<h2 id="怎么看这篇对比">怎么看这篇对比</h2>
+<p>选加密货币卡时，只看广告里的返现率很容易做错判断。真正影响到手回报的，还有返现上限、消费分档、手续费、返现币种和地区限制。</p>
+<p>为了方便横向比较，下面统一按<strong>免费档、每月消费
+$1,000、美国境内消费</strong>来估算实际返现。具体权益和可申请地区可能随时变化，申请前仍要以官方页面和
+App 内显示为准。</p>
 <blockquote>
-<p><strong>提示：</strong></p>
+<p><strong>先提醒三点：</strong></p>
 <ol type="1">
-<li>各卡可用地区差异很大（见下表备注），申请前请先确认自己所在地区是否支持；</li>
-<li>返现、费用与优惠均为评测时点数据，发卡方可能随时调整，请以官方页面为准；</li>
-<li>本文仅为信息整理，不构成投资或办卡建议。</li>
+<li>有些卡只开放给特定国家或地区的用户；</li>
+<li>平台币返现会受到币价和领取规则影响；</li>
+<li>本文只做信息整理，不构成投资或办卡建议。</li>
 </ol>
 </blockquote>
-<h2 id="一免费档返现对比总表">一、免费档返现对比总表</h2>
+<h2 id="先说结论">先说结论</h2>
+<ul>
+<li><strong>美国用户看重综合返现</strong>：EtherFi，每月前 $2,000
+合格消费返现 3%</li>
+<li><strong>想直接拿 BTC</strong>：Lava，日常返现 3%，部分合作商户最高
+5%</li>
+<li><strong>想拿 USDT，且不在受限地区</strong>：MEXC 卡，Standard
+档名义返现 4%，扣除 1% 消费手续费后约为 3%</li>
+<li><strong>更看重自托管体验</strong>：Bitget Wallet
+卡，钱包直连，返现最高 3%</li>
+<li><strong>准备在开卡后集中消费</strong>：KAST，首 $1,000
+消费叠加里程碑奖金后约可获得 $115</li>
+<li><strong>每月消费不超过 $500</strong>：Plasma One Lite，前 $500 返现
+2%</li>
+</ul>
+<h2 id="免费档返现对比">免费档返现对比</h2>
 <table>
 <thead>
 <tr>
@@ -73,153 +90,146 @@ $1,000 消费下的实际返现。</p>
 <tr>
 <td>MEXC 卡</td>
 <td>4%（Standard 档），返现为 USDT</td>
-<td>无年费；消费手续费 1%（2026-09-30 前促销免，已结束）；月返现上限 100
-USDT；<strong>美国等 69 个国家/地区不可用</strong></td>
-<td>约 3.00%（$30，扣除 1% 手续费后）</td>
+<td>无年费；消费手续费 1%；月返现上限 100 USDT；美国等 69
+个国家或地区不可用</td>
+<td>约 3.00%（$30）</td>
 </tr>
 <tr>
 <td>EtherFi</td>
-<td>首 $2,000 消费 3%</td>
-<td>免费 Core 会员；返现为 ETHFI；到账锁定 7 天；满 $5 可领取；17
+<td>每月前 $2,000 消费 3%</td>
+<td>免费 Core 会员；返现为 ETHFI；锁定 7 天；满 $5 可领取；17
 个州不可用</td>
 <td>3.00%（$30）</td>
 </tr>
 <tr>
 <td>Lava</td>
 <td>美国用户 3%</td>
-<td>无年费、无交易费；返现为 BTC；累计满 0.001 BTC 可赎回</td>
+<td>无年费、无交易费；返现为 BTC；累计满 0.001 BTC 才可赎回</td>
 <td>3.00%（$30）</td>
 </tr>
 <tr>
 <td>Bitget Wallet 卡</td>
 <td>最高 3%</td>
-<td>月度返现上限；用 USDT / USDC 充值；Mastercard
-网络；自托管钱包直连</td>
+<td>设有月度返现上限；使用 USDT 或 USDC 充值；自托管钱包直连</td>
 <td>最高 3.00%（$30）</td>
 </tr>
 <tr>
 <td>KAST</td>
-<td>首 $2,000 消费 1.5%</td>
+<td>每月前 $2,000 消费 1.5%</td>
 <td>无年费；USD 卡消费 0 手续费；返现为 USD</td>
 <td>1.50%（$15）</td>
 </tr>
 <tr>
 <td>Plasma One</td>
-<td>首 $500 消费 2%，之后 0.1%</td>
-<td>免费档；返现为 XPL，可手动兑换为 USD</td>
+<td>前 $500 消费 2%，之后 0.1%</td>
+<td>免费 Lite 档；返现为 XPL，需要手动兑换为 USD</td>
 <td>1.05%（$10.50）</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>说明：</strong> MEXC 卡在美国不可用，此处按其 Standard
-档列出供非美国地区用户参考；其 0 手续费促销已于 2026-09-30
-结束，当前消费手续费为 1%。</p>
+<p>MEXC 卡在美国不可用，表格只用于帮助非美国地区用户比较。它的 0
+手续费促销已经结束，目前消费手续费为 1%。</p>
 </blockquote>
-<h2 id="二逐卡详解">二、逐卡详解</h2>
-<h3 id="综合返现最强etherfi">综合返现最强：EtherFi</h3>
+<h2 id="六张卡分别适合谁">六张卡分别适合谁</h2>
+<h3 id="etherfi综合返现更高">EtherFi：综合返现更高</h3>
 <figure>
 <img loading="lazy" decoding="async"
 src="assets/best-crypto-cards-2026/01-etherfi.webp"
 alt="EtherFi 卡" />
 <figcaption aria-hidden="true">EtherFi 卡</figcaption>
 </figure>
+<p>如果你在支持地区、每月消费不超过 $2,000，EtherFi Core 的 3%
+返现很直接。需要注意的是，奖励以 ETHFI 发放，到账后锁定 7
+天，币价变化也会影响实际价值。</p>
 <ul>
-<li>免费 Core 档：每月首 $2,000 消费返 3%，$2,001–$3,000 返 1%，之后
+<li>每月前 $2,000 消费返现 3%，$2,001 至 $3,000 返现 1%，之后为
 0.5%</li>
-<li>$1,000/月消费约返 $30；返现按到账时价格折算为 ETHFI，锁定 7 天，满
-$5 可领取</li>
-<li>亮点：四级推荐计划（推荐人消费返现、卡佣金、收益分成）；支持
-EUR、USD（RWA）、ETH、BTC 等多种资产 staking（14 天追踪 APY）</li>
-<li>短板：17 个州不可用；返现为平台币，领取前价格可能波动；有 7
-天锁与领取门槛</li>
+<li>每月消费 $1,000，预计获得约 $30 的 ETHFI</li>
+<li>支持 EUR、USD（RWA）、ETH、BTC 等资产 staking</li>
+<li>17 个州不可用，领取前还要满足 $5 的最低门槛</li>
 </ul>
-<h3 id="比特币返现lava">比特币返现：Lava</h3>
+<h3 id="lava适合想拿-btc-的用户">Lava：适合想拿 BTC 的用户</h3>
 <figure>
 <img loading="lazy" decoding="async"
 src="assets/best-crypto-cards-2026/02-lava.webp" alt="Lava 卡" />
 <figcaption aria-hidden="true">Lava 卡</figcaption>
 </figure>
+<p>Lava 的特点不是复杂的分档，而是把奖励直接做成
+BTC。美国用户日常合格消费返现 3%，Amazon、Apple、Netflix
+等合作商户最高可到 5%。</p>
 <ul>
-<li>美国用户日常合格消费 3% BTC 返现；合作商户（Amazon、Apple、Netflix
-等）最高 5%</li>
-<li>$1,000/月约返 $30（以 BTC 计价）</li>
-<li>亮点：App 界面直观；免费卡即 Visa
-Infinite（含旅行礼遇、机场贵宾厅等）；提供 BTC 信用额度（$100,000
-以下年利率 7.5%）</li>
-<li>短板：需累计满 0.001 BTC 才可赎回，消费少的用户到账较慢</li>
+<li>每月消费 $1,000，预计获得约 $30 的 BTC</li>
+<li>免费卡即 Visa Infinite，包含部分旅行权益</li>
+<li>可使用 BTC 信用额度，$100,000 以下年利率为 7.5%</li>
+<li>返现累计到 0.001 BTC 后才能赎回，低频用户需要等待更久</li>
 </ul>
-<h3 id="稳定币高返现mexc-卡">稳定币高返现：MEXC 卡</h3>
+<h3 id="mexc-卡usdt-返现高但限制也多">MEXC 卡：USDT
+返现高，但限制也多</h3>
 <figure>
 <img loading="lazy" decoding="async"
 src="assets/best-crypto-cards-2026/03-mexc.webp" alt="MEXC 卡" />
 <figcaption aria-hidden="true">MEXC 卡</figcaption>
 </figure>
+<p>MEXC 卡的返现数字很吸引人，但实际回报要把 1%
+消费手续费算进去。Standard 档名义返现 4%，因此每月消费 $1,000
+时，实际回报约为 $30。</p>
 <ul>
-<li>三档 USDT 返现：Standard 4%（月上限 100 USDT）/ Premier 6%（月上限
-300 USDT）/ Elite 10%（月上限 800 USDT）；当月档位按每月最后一天的 VVIP
-等级（M-Score）确定，M-Score 来自交易、Earn 与平台任务</li>
-<li>费用：无年费、无开卡费（限时免）、无充值费；消费手续费
-1%（2026-09-30 前促销 0%，已结束）；MEXC 不加外汇加价，仅 Visa 自身
-0.1%–0.3% 点差</li>
-<li>返现于次月 15
-日前发放到现货账户；退款订单会扣回返现；部分商户类别（转账、金融服务、博彩等）无返现</li>
-<li>亮点：7% APR 的 USDT 专属 Earn（100–100,000
-USDT，按小时计息、按天发放）；Visa 网络，支持 Apple Pay / Google
-Pay；限时邀请奖励（邀请人 20 USDT / 被邀请人 10 USDT）</li>
-<li>短板：<strong>美国、中国等 69
-个国家/地区不可用</strong>；高档位依赖平台活跃度（M-Score）</li>
+<li>Standard、Premier、Elite 三档返现分别为 4%、6%、10%</li>
+<li>每月返现上限分别为 100、300、800 USDT</li>
+<li>档位由每月最后一天的 VVIP 等级（M-Score）决定</li>
+<li>返现会在次月 15 日前发到现货账户，退款订单会扣回奖励</li>
+<li>美国、中国等 69 个国家或地区不可用，高档位也依赖平台活跃度</li>
 </ul>
-<h3 id="自托管钱包卡bitget-wallet-卡">自托管钱包卡：Bitget Wallet
-卡</h3>
+<h3 id="bitget-wallet-卡更强调自托管">Bitget Wallet
+卡：更强调自托管</h3>
 <figure>
 <img loading="lazy" decoding="async"
 src="assets/best-crypto-cards-2026/04-bitget-wallet.webp"
 alt="Bitget Wallet 卡" />
 <figcaption aria-hidden="true">Bitget Wallet 卡</figcaption>
 </figure>
+<p>这张卡更适合已经在使用自托管钱包的人。资产仍由自己管理，需要消费时再划转到独立的卡账户，不必长期把全部余额放在托管平台。</p>
 <ul>
-<li>最高 3% 返现（设有月度上限）；用 USDT / USDC 充值后全球消费</li>
-<li>自托管钱包直连：钱包资产由自己掌控，按需划转到独立的卡账户
-spending</li>
-<li>Mastercard 网络，覆盖 1.5 亿+商户；在 Bitget Wallet App
-内几分钟即可开通虚拟卡</li>
-<li>短板：返现币种与月度上限细节以官方说明为准；2026 年 7
-月首发南亚，地区覆盖持续扩展中，申请前请确认</li>
+<li>使用 USDT 或 USDC 充值，消费返现最高 3%</li>
+<li>Mastercard 网络覆盖广，可在 Bitget Wallet App 内开通虚拟卡</li>
+<li>返现币种和月度上限以 App 内显示为准</li>
+<li>地区仍在逐步开放，申请前要先确认资格</li>
 </ul>
-<h3 id="固定返现--新人奖励kast">固定返现 + 新人奖励：KAST</h3>
+<h3 id="kast新人奖励更有吸引力">KAST：新人奖励更有吸引力</h3>
 <figure>
 <img loading="lazy" decoding="async"
 src="assets/best-crypto-cards-2026/05-kast.webp" alt="KAST 卡" />
 <figcaption aria-hidden="true">KAST 卡</figcaption>
 </figure>
+<p>KAST 的常规返现只有
+1.5%，但新人里程碑奖金让它更适合开卡后有明确消费计划的人。首 $1,000
+消费如果满足全部条件，常规返现和奖金合计约为 $115。</p>
 <ul>
-<li>免费 Standard 档：每月首 $2,000 消费返 1.5%，返现为
-USD；$1,000/月约返 $15</li>
-<li>新人里程碑奖金：消费满 $100 返 $20、满 $500 返 $30、满 $1,000 返
-$50（累计最高 $100），叠加常规返现后首 $1,000 可拿约 $115</li>
-<li>亮点：免费虚拟卡（多种卡面设计），默认 Visa Platinum；USD Prime
-Vault 3.3% APY、Gauntlet Alpha Vault 最高 7% APY；推荐奖励最高
-$1,250</li>
-<li>短板：常规返现率低于前几名</li>
+<li>消费满 $100、$500、$1,000，可分别获得 $20、$30、$50 奖金</li>
+<li>免费 Standard 档每月前 $2,000 消费返现 1.5%</li>
+<li>默认提供 Visa Platinum 虚拟卡，并有多种封面</li>
+<li>USD Prime Vault 为 3.3% APY，Gauntlet Alpha Vault 最高 7% APY</li>
 </ul>
-<h3 id="小额消费之王plasma-one">小额消费之王：Plasma One</h3>
+<h3 id="plasma-one适合小额月度消费">Plasma One：适合小额月度消费</h3>
 <figure>
 <img loading="lazy" decoding="async"
 src="assets/best-crypto-cards-2026/06-plasma-one.webp"
 alt="Plasma One 卡" />
 <figcaption aria-hidden="true">Plasma One 卡</figcaption>
 </figure>
+<p>Plasma One Lite 的优势集中在每月前 $500
+消费。超过这个额度后返现会降到
+0.1%，因此更适合作为小额日常消费卡，而不是主力卡。</p>
 <ul>
-<li>免费 Lite 档：每月首 $500 消费返 2%，之后 0.1%；$1,000/月混合返现约
-1.05%（$10.50）</li>
-<li>返现为 XPL，可手动兑换为 USD</li>
-<li>亮点：Earn 功能 3.85% APY 且无锁仓；支持 Apple Pay / Google
-Pay，绑卡便捷</li>
-<li>短板：超过 $500 后返现率骤降，更适合月消费 $500 以内的用户</li>
+<li>每月前 $500 消费返现 2%，之后为 0.1%</li>
+<li>每月消费 $1,000 时，综合返现约为 $10.50</li>
+<li>返现以 XPL 发放，需要手动兑换为 USD</li>
+<li>Earn 功能为 3.85% APY，无锁仓要求，并支持 Apple Pay 和 Google
+Pay</li>
 </ul>
-<h2 id="三开卡奖励与限时优惠">三、开卡奖励与限时优惠</h2>
-<p>除常规返现外，以下几张卡的新人奖励或限时优惠值得单独关注：</p>
+<h2 id="开卡奖励和限时优惠">开卡奖励和限时优惠</h2>
+<p>常规返现决定长期体验，开卡奖励更适合短期比较。下面这些优惠都有额外条件，不能只看宣传数字。</p>
 <table>
 <thead>
 <tr>
@@ -232,109 +242,84 @@ Pay，绑卡便捷</li>
 <tbody>
 <tr>
 <td>KAST</td>
-<td>里程碑奖金最高 $100（$100→$20、$500→$30、$1,000→$50）</td>
-<td>各地区活动可能有差异，以 App 内 Rewards 页面为准</td>
+<td>里程碑奖金最高 $100</td>
+<td>各地区活动可能不同，以 App 内 Rewards 页面为准</td>
 <td>约 $115（含 $15 常规返现）</td>
 </tr>
 <tr>
 <td>Oobit</td>
-<td>OOB 充值消费最高 10%；USDT / USDC 消费最高 5%（$200 内）</td>
-<td>需累计消费 $250 解锁 Level 2；单笔 ≥$1；交易费 $0.25 或 1%
+<td>OOB 充值消费最高 10%；USDT 或 USDC 消费最高 5%（$200 内）</td>
+<td>累计消费 $250 解锁 Level 2；单笔至少 $1；交易费为 $0.25 或 1%
 取高者；仅限 Tap to Pay</td>
 <td>扣费后约 $55</td>
 </tr>
 <tr>
 <td>Lava</td>
-<td>合作商户 5% BTC 返现（Amazon、Apple、Netflix 等）</td>
-<td>仅限合作商户；0.001 BTC 起赎</td>
+<td>合作商户最高 5% BTC 返现</td>
+<td>仅限合作商户；累计满 0.001 BTC 才可赎回</td>
 <td>约 $50</td>
 </tr>
 <tr>
 <td>MEXC 卡</td>
-<td>限时邀请奖励：邀请人 20 USDT / 被邀请人 10 USDT</td>
-<td>被邀请人首次入金 7 天内净入金 ≥100 USDT 并持仓 24
-小时，且激活卡片</td>
-<td>—</td>
+<td>邀请人 20 USDT，被邀请人 10 USDT</td>
+<td>被邀请人首次入金 7 天内净入金至少 100 USDT，持仓 24
+小时并激活卡片</td>
+<td>不计入消费返现</td>
 </tr>
 </tbody>
 </table>
-<h3 id="kast综合新人奖励最高">KAST：综合新人奖励最高</h3>
-<p>里程碑奖金按累计消费发放，假设可叠加，新用户首 $1,000 消费可额外拿
-$100 奖金，加上 $15 常规返现，合计约 $115，相当于促销期 11.5%
-的实际回报。适合开卡后短期内有明确消费计划的新用户。</p>
-<h3
-id="oobit名义比率最高但限制最多">Oobit：名义比率最高，但限制最多</h3>
-<p>OOB 充值消费最高 10%（上限 $10,000 消费）、USDT / USDC 消费 5%（上限
-$200），奖励以 USDT 发放。但需先达到 Level 2、有交易费、且仅限 Tap to
-Pay 场景，适合已在用 Oobit 并持有 OOB 的用户。</p>
-<h3 id="lava商户定向优惠">Lava：商户定向优惠</h3>
-<p>在 Amazon、Apple、Netflix 等合作商户消费最高 5% BTC 返现，叠加本身 3%
-的日常返现，适合明确想要 BTC 返现的新手用户。</p>
-<h3 id="mexc-卡邀请奖励限时">MEXC 卡：邀请奖励（限时）</h3>
-<p>邀请人得 20 USDT、被邀请人得 10 USDT，被邀请人需在首次入金 7
-天内净入金 ≥100 USDT、持仓 24 小时并激活卡片。另请注意其 0
-手续费促销已于 2026-09-30 结束。</p>
-<h2 id="四税务说明美国口径">四、税务说明（美国口径）</h2>
-<p>购买返现一般被视为价格折扣而非应税收入；但如果返现以
+<p><strong>KAST</strong> 的奖励路径最清楚，适合开卡后短期内能够完成
+$1,000 消费的人。</p>
+<p><strong>Oobit</strong> 的名义比例最高，但要先升级到 Level
+2，还要考虑交易费和 Tap to Pay 限制。</p>
+<p><strong>Lava</strong> 的 5%
+返现只适用于合作商户，适合消费场景比较集中的用户。</p>
+<p><strong>MEXC 卡</strong>
+的邀请奖励需要满足入金、持仓和激活条件，它和日常消费返现是两套规则。</p>
+<h2 id="选卡时我会看什么">选卡时我会看什么</h2>
+<p>我会先确认自己是否能申请，再计算真实返现。返现率相近时，费用、返现币种和赎回门槛往往比宣传数字更重要。</p>
+<ul>
+<li><strong>实际返现</strong>：把消费分档、返现上限、手续费和兑换成本一起算进去</li>
+<li><strong>返现币种</strong>：USD 和稳定币更省心；BTC
+和平台币会带来价格波动</li>
+<li><strong>领取门槛</strong>：注意最低领取金额、锁定期和是否需要手动兑换</li>
+<li><strong>日常费用</strong>：检查年费、开卡费、外汇费、ATM
+费和汇率点差</li>
+<li><strong>地区资格</strong>：申请政策变化较快，提交资料前再确认一次</li>
+<li><strong>支付方式</strong>：如果需要 Apple Pay 或 Google
+Pay，要确认自己所在地区是否支持</li>
+</ul>
+<h2 id="税务提醒">税务提醒</h2>
+<p>以美国口径来看，购买返现通常被视为价格折扣，而不是应税收入。但如果奖励以
 BTC、XPL
-等数字资产发放，后续卖出、兑换或消费时可能产生资本利得或损失；开卡奖励、推荐奖励、staking
-收益等非购买挂钩的奖励，税务处理可能不同。建议记录每次返现的资产种类、到账日期、数量、美元公允价值与成本基础。</p>
+等数字资产发放，之后卖出、兑换或消费时，仍可能产生资本利得或损失。开卡奖励、推荐奖励和
+staking 收益的处理方式也可能不同。</p>
+<p>建议记录每次奖励的资产种类、到账日期、数量、当时的美元价值和成本基础。</p>
 <blockquote>
-<p><strong>注意：</strong>
-以上仅为美国税务口径。其他国家/地区（如新加坡）规定不同，请咨询当地税务专业人士。</p>
+<p>以上只适用于美国税务语境。其他国家和地区的规定不同，如有需要请咨询当地税务专业人士。</p>
 </blockquote>
-<h2 id="五选卡关键指标">五、选卡关键指标</h2>
-<ul>
-<li><strong>名义返现 vs
-实际返现</strong>：只看广告返现率会吃亏，要看上限、分档、手续费，算自己消费水平下的实际返现</li>
-<li><strong>返现币种</strong>：USD / BTC / 稳定币 /
-平台币——影响价格波动、流动性与记账复杂度</li>
-<li><strong>赎回门槛</strong>：满 $5 可领、满 0.001 BTC
-可赎等，门槛越高到账越慢</li>
-<li><strong>外汇手续费</strong>：0%–2.5%
-不等，跨境消费多的人要重点看</li>
-<li><strong>年费 / 开卡费 / ATM
-费</strong>：多数卡免年费，注意实体卡工本费与取现费</li>
-<li><strong>可用地区</strong>：申请前必查，政策会变</li>
-<li><strong>Apple Pay / Google Pay</strong>：目前主流卡基本都支持</li>
-</ul>
-<h2 id="六结论">六、结论</h2>
-<ul>
-<li><strong>综合返现最强（美国）</strong>：EtherFi，首 $2,000 消费
-3%</li>
-<li><strong>想要 BTC 返现</strong>：Lava，日常 3% + 合作商户 5%</li>
-<li><strong>想要 USDT 高返现（且不在受限地区）</strong>：MEXC
-卡，Standard 档 4% 起</li>
-<li><strong>看重自托管</strong>：Bitget Wallet 卡，钱包直连、最高
-3%</li>
-<li><strong>新人奖励最丰厚</strong>：KAST，首 $1,000 可拿约 $115</li>
-<li><strong>月消费 $500 以内</strong>：Plasma One，首 $500 返 2%</li>
-</ul>
-<h2 id="七常见问题">七、常见问题</h2>
-<p><strong>问：每月消费 $1,000，哪张免费卡最划算？</strong></p>
-<p>答：美国用户选 EtherFi（3%，约 $30）；想要 BTC 选 Lava（同样约
-$30）；新人首月可考虑 KAST（叠加里程碑奖金约
-$115）；不在美国受限地区的话，MEXC 卡 Standard 档名义 4%、扣 1%
-手续费后实际约 3%。</p>
-<p><strong>问：加密返现卡是怎么运作的？</strong></p>
-<p>答：用卡进行合格消费后，发卡方按返现率发放加密货币、稳定币、平台代币或
-USD
-奖励。有的自动到账，有的需手动领取或满足锁定期；返现率还可能受消费分档、卡等级、充值资产类型影响。</p>
-<p><strong>问：什么是"实际返现"？</strong></p>
-<p>答：扣掉返现上限、消费分档、手续费、兑换成本、外汇点差，并考虑返现代币价格波动后，真正落到手里的回报。广告写
-3% 不等于每笔消费都拿 3%。</p>
-<p><strong>问：哪些费用会侵蚀返现？</strong></p>
-<p>答：主要是加密货币兑换费、外汇手续费、会员费、取现费和汇率点差。名义返现高但费用多的卡，实际回报可能不如一张低返现、零费用的卡。</p>
-<p><strong>问：这些卡有实体卡吗？</strong></p>
-<p>答：几乎都有，实体卡通常收少量工本费或运费；一般先发虚拟卡，可立即绑
-Apple Pay / Google Pay 使用。</p>
-<p><strong>问：退款后返现会被收回吗？</strong></p>
-<p>答：会。返现与原始交易挂钩，交易退款、撤销或拒付后，发卡方会取消待发放奖励或扣回已发放的返现；部分退款按比例扣回。</p>
-<p><strong>问：返现需要报税吗（美国）？</strong></p>
-<p>答：购买返现一般视为折扣而非应税收入；但返现资产后续卖出、兑换或消费可能产生资本利得/损失；开卡奖励等非购买挂钩奖励处理可能不同，请咨询税务专业人士。</p>
-<p><strong>问：返现以什么币种发放重要吗？</strong></p>
-<p>答：重要。USD / 稳定币最省心；BTC 有升值空间也有波动；平台币（如
-ETHFI、XPL）可能有锁定期和领取门槛，价格波动会直接影响实际到手价值。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>每月消费 $1,000，哪张免费卡更划算？</strong></p>
+<p>美国用户可以优先比较 EtherFi 和 Lava，两张卡的常规回报都约为
+$30。新人首月如果能完成全部里程碑，KAST 的短期奖励更高。不在 MEXC
+受限地区的用户，也可以考虑扣除手续费后约 3% 的 Standard 档。</p>
+<p><strong>加密返现卡是怎么运作的？</strong></p>
+<p>完成符合条件的消费后，发卡方会按规则发放加密货币、稳定币、平台代币或
+USD。有些奖励自动到账，有些需要手动领取，或者要先经过锁定期。</p>
+<p><strong>什么是实际返现？</strong></p>
+<p>实际返现是扣除返现上限、消费分档、手续费、兑换成本和外汇点差后，真正能拿到的回报。广告写
+3%，并不代表每一笔消费最终都有 3%。</p>
+<p><strong>哪些费用最容易吃掉返现？</strong></p>
+<p>常见的有加密货币兑换费、外汇手续费、会员费、取现费和汇率点差。名义返现高但费用多的卡，可能还不如一张低返现、低费用的卡。</p>
+<p><strong>这些卡有实体卡吗？</strong></p>
+<p>大部分平台会先提供虚拟卡，实体卡通常要另外支付制卡费或运费。是否能申请实体卡仍取决于地区和账户资格。</p>
+<p><strong>退款后返现会被收回吗？</strong></p>
+<p>通常会。交易退款、撤销或拒付后，发卡方会取消待发放奖励，或按比例扣回已经发放的返现。</p>
+<p><strong>返现需要报税吗？</strong></p>
+<p>购买返现在美国通常被视为折扣，但奖励资产之后卖出、兑换或消费时可能产生资本利得或损失。开卡奖励等非购买挂钩奖励的处理方式也可能不同。</p>
+<p><strong>返现币种重要吗？</strong></p>
+<p>很重要。USD 和稳定币更容易记账；BTC 有价格波动；ETHFI、XPL
+等平台币还可能存在锁定期、领取门槛和额外的价格风险。</p>
 </article>
 </div>
 </body>

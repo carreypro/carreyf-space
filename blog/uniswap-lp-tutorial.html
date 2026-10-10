@@ -19,6 +19,9 @@
   article h2 { font-size: 1rem; font-weight: 500; margin: 2.8rem 0 0.9rem; }
   article h3 { font-size: 1rem; font-weight: 500; margin: 2.2rem 0 0.7rem; }
   article p { margin: 0 0 1.2em; }
+  article img { display: block; max-width: 100%; height: auto; border-radius: 12px; margin: 0 auto; }
+  article figure { margin: 1.6rem 0 2rem; }
+  article figcaption { margin-top: 0.65rem; color: oklch(0.52 0.008 80); font-size: 0.82rem; line-height: 1.5; text-align: center; }
   article ul, article ol { margin: 0 0 1.2em; padding-left: 1.6em; }
   article li { margin-bottom: 0.35em; }
   article li > p { margin: 0; }
@@ -30,8 +33,6 @@
   article th { color: oklch(0.60 0.008 80); font-weight: 400; }
   article hr { border: none; border-top: 1px solid oklch(0.88 0.006 85); margin: 3rem 0; }
   article code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; background: oklch(0.952 0.005 85); border-radius: 6px; padding: 0.1em 0.4em; }
-  .image-placeholder { display: flex; align-items: center; min-height: 5.5rem; margin: 1.6rem 0; padding: 1rem 1.25rem; border: 1px dashed oklch(0.78 0.006 85); border-radius: 12px; background: oklch(0.958 0.004 85); }
-  .image-placeholder figcaption { color: oklch(0.52 0.008 80); font-size: 0.88rem; }
   @media (max-width: 540px) {
     body { font-size: 14px; }
     .page { padding: 1.6rem 1.2rem 6rem; }
@@ -107,13 +108,23 @@ Gas</li>
 1：打开官网，点击"流动性池"</h3>
 <p>访问 Uniswap 应用，顶部导航栏点击
 <strong>流动性池</strong>（英文界面为 Pools）。</p>
-<figure class="image-placeholder"><figcaption>图 1：Uniswap 应用首页</figcaption></figure>
+<figure>
+<img loading="lazy" decoding="async"
+src="assets/uniswap-lp-tutorial/01-uniswap-home.webp"
+alt="Uniswap 应用首页" />
+<figcaption aria-hidden="true">Uniswap 应用首页</figcaption>
+</figure>
 <h3 id="步骤-2浏览资金池列表">步骤 2：浏览资金池列表</h3>
 <p>页面标题为
 <strong>"提供流动性，赚取费用"</strong>，副标题"为最大的流动性协议做贡献并获得奖励"。下方有"创建头寸
 / 创建资金池 / 发布代币"按钮，以及"热门资金池"表格（含总锁仓量、1 天 /
 30 天交易量、资金池 APR 等列）。</p>
-<figure class="image-placeholder"><figcaption>图 2：流动性池页面：热门资金池表格</figcaption></figure>
+<figure>
+<img loading="lazy" decoding="async"
+src="assets/uniswap-lp-tutorial/02-pools-list.webp"
+alt="流动性池页面：热门资金池表格" />
+<figcaption aria-hidden="true">流动性池页面：热门资金池表格</figcaption>
+</figure>
 <blockquote>
 <p><strong>说明：</strong> 表格中的 APR
 和交易量是实时数据。挑选资金池时重点看"交易量 /
@@ -124,7 +135,13 @@ Gas</li>
 position）进入新建流程。未连接钱包时会弹出钱包选择窗口（WalletConnect /
 MetaMask / Coinbase Wallet / Binance Wallet
 等选项），演示中直接关闭，未连接任何钱包。</p>
-<figure class="image-placeholder"><figcaption>图 3：新建头寸初始页与钱包连接弹窗（未连接）</figcaption></figure>
+<figure>
+<img loading="lazy" decoding="async"
+src="assets/uniswap-lp-tutorial/03-new-position-wallet.webp"
+alt="新建头寸初始页与钱包连接弹窗（未连接）" />
+<figcaption
+aria-hidden="true">新建头寸初始页与钱包连接弹窗（未连接）</figcaption>
+</figure>
 <blockquote>
 <p><strong>注意：</strong> 本文演示全程未连接钱包。实际组 LP
 时需要先连接钱包，并在钱包中确认后续每一笔交易。</p>
@@ -138,7 +155,13 @@ MetaMask / Coinbase Wallet / Binance Wallet
 5：选择资金池版本与费率档位</h3>
 <p>同一代币对可能有多个资金池（v2 / v3 /
 v4，不同费率），各池的锁仓量、交易量、APR 都不同：</p>
-<figure class="image-placeholder"><figcaption>图 4：第 1 步"选择资金池"：ETH/USDC 各版本与费率列表</figcaption></figure>
+<figure>
+<img loading="lazy" decoding="async"
+src="assets/uniswap-lp-tutorial/04-pool-selection.webp"
+alt="第 1 步&quot;选择资金池&quot;：ETH/USDC 各版本与费率列表" />
+<figcaption aria-hidden="true">第 1 步"选择资金池"：ETH/USDC
+各版本与费率列表</figcaption>
+</figure>
 <p>常见费率档位（v3）：</p>
 <table>
 <thead>
@@ -187,9 +210,20 @@ USDC/WETH；总锁仓量约 US$4449.5万；24 小时交易量约 US$1630.2万；
 最高价格输入框。页面说明原文：<em>"自定义区间可将流动性集中在特定价格区间内，提高资金效率和费用收益，但需要更主动的管理。"</em></li>
 <li><strong>全区间</strong>：在所有价格参与做市，操作简单。页面明确提示：<em>"提供全区间流动性可确保在所有价格区间持续参与市场，操作简单，但可能带来更高的无常损失。"</em></li>
 </ul>
-<figure class="image-placeholder"><figcaption>图 5：第 2
-步"设置价格区间"：自定义区间、价格图表与最低/最高价输入框</figcaption></figure>
-<figure class="image-placeholder"><figcaption>图 6：全区间模式：最低价 0、最高价 ∞，及无常损失风险提示</figcaption></figure>
+<figure>
+<img loading="lazy" decoding="async"
+src="assets/uniswap-lp-tutorial/05-custom-range.webp"
+alt="第 2 步&quot;设置价格区间&quot;：自定义区间、价格图表与最低/最高价输入框" />
+<figcaption aria-hidden="true">第 2
+步"设置价格区间"：自定义区间、价格图表与最低/最高价输入框</figcaption>
+</figure>
+<figure>
+<img loading="lazy" decoding="async"
+src="assets/uniswap-lp-tutorial/06-full-range.webp"
+alt="全区间模式：最低价 0、最高价 ∞，及无常损失风险提示" />
+<figcaption aria-hidden="true">全区间模式：最低价 0、最高价
+∞，及无常损失风险提示</figcaption>
+</figure>
 <p>价格策略快捷卡片（四选一快速设置）：</p>
 <ul>
 <li><strong>稳定 ±1.82%</strong>（适合稳定币或低波动代币对）</li>
@@ -206,8 +240,19 @@ USDC/WETH；总锁仓量约 US$4449.5万；24 小时交易量约 US$1630.2万；
 <p>在"存入代币"区输入任意一种代币的数量，另一种会按当前价格自动计算。例如输入
 <strong>0.01 ETH</strong>（约 US$24.97），自动算出 <strong>24.999462
 USDC</strong>（约 US$25.00）。</p>
-<figure class="image-placeholder"><figcaption>图 7：存入代币区域（未填写金额）</figcaption></figure>
-<figure class="image-placeholder"><figcaption>图 8：输入 0.01 ETH 后，USDC 数量自动计算得出</figcaption></figure>
+<figure>
+<img loading="lazy" decoding="async"
+src="assets/uniswap-lp-tutorial/07-deposit-empty.webp"
+alt="存入代币区域（未填写金额）" />
+<figcaption aria-hidden="true">存入代币区域（未填写金额）</figcaption>
+</figure>
+<figure>
+<img loading="lazy" decoding="async"
+src="assets/uniswap-lp-tutorial/08-deposit-filled.webp"
+alt="输入 0.01 ETH 后，USDC 数量自动计算得出" />
+<figcaption aria-hidden="true">输入 0.01 ETH 后，USDC
+数量自动计算得出</figcaption>
+</figure>
 <blockquote>
 <p><strong>说明：</strong></p>
 <ol type="1">

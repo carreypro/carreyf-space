@@ -284,14 +284,18 @@
     display: flex;
     max-width: 31rem;
     flex-direction: column;
-    gap: 0.28rem;
+    gap: 0.16rem;
   }
   .products-list:not(.is-expanded) .product:nth-of-type(n + 5) { display: none; }
   .product {
-    display: block;
-    padding: 0.5rem 0.75rem;
-    margin: 0 -0.75rem;
-    border-radius: 9px;
+    display: grid;
+    grid-template-columns: 1.28rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.72rem;
+    min-height: 2rem;
+    padding: 0.3rem 0.55rem;
+    margin: 0 -0.55rem;
+    border-radius: 7px;
     text-decoration: none;
     color: var(--ink);
     transition: background-color 0.18s cubic-bezier(0.2, 0, 0, 1);
@@ -300,36 +304,49 @@
   .product:focus-visible {
     background-color: color-mix(in oklch, var(--paper-soft) 60%, transparent);
   }
-  .product-top {
+  .product-icon {
+    display: inline-grid;
+    width: 1.28rem;
+    height: 1.28rem;
+    place-items: center;
+    border-radius: 5px;
+    color: oklch(0.98 0.004 85);
+    font-size: 0.68rem;
+    line-height: 1;
+  }
+  .product-icon--nicecard { background: oklch(0.62 0.17 292); }
+  .product-icon--kline { background: oklch(0.62 0.14 151); }
+  .product-icon--naraka { background: oklch(0.66 0.14 48); }
+  .product-icon--hutao { background: oklch(0.66 0.16 23); }
+  .product-icon--carrey { background: oklch(0.38 0.01 80); }
+  .product-icon--seedhub { background: oklch(0.60 0.13 238); }
+  .product-icon--5eplay { background: oklch(0.61 0.17 18); }
+  .product-line {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.55rem;
+    align-items: baseline;
+    min-width: 0;
+    gap: 0.62rem;
   }
-  .product-name { font-weight: 500; font-size: 1rem; }
-  .product-desc {
-    display: block;
-    margin-top: 0.15rem;
-    color: var(--gray);
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  .product-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    color: var(--ink-soft);
-    background: var(--paper-soft);
-    border-radius: 999px;
-    padding: 0.12rem 0.55rem;
-    font-size: 0.78rem;
-    font-weight: 500;
+  .product-name {
+    flex: 0 0 auto;
+    font-size: 0.92rem;
+    font-weight: 600;
     line-height: 1.45;
   }
-  .product-tag i { font-size: 0.68rem; }
+  .product-divider {
+    flex: 0 0 auto;
+    color: var(--gray);
+    font-size: 0.88rem;
+  }
+  .product-desc {
+    min-width: 0;
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
   .products-more {
     align-self: flex-start;
-    margin-top: 0.18rem;
+    margin: 0.25rem 0 0 2rem;
     padding: 0.42rem 0;
     border: 0;
     background: none;
@@ -420,7 +437,7 @@
       z-index: 2;
     }
     #products {
-      width: 100%;
+      width: min(46rem, calc(50vw + 14.5rem));
       margin-left: 0;
     }
     .products-stage {
@@ -786,59 +803,38 @@
     <div class="products-stage">
       <div class="products-list has-overflow" id="productsList">
         <a class="product" href="https://nicecard.space" target="_blank" rel="noopener">
-          <span class="product-top">
-            <span class="product-name">Nicecard</span>
-            <span class="product-tag"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>新</span>
-          </span>
-          <span class="product-desc">寻找最适合你的加密货币卡</span>
+          <span class="product-icon product-icon--nicecard" aria-hidden="true"><i class="fa-solid fa-credit-card"></i></span>
+          <span class="product-line"><span class="product-name">Nicecard</span><span class="product-divider" aria-hidden="true">/</span><span class="product-desc">寻找最适合你的加密货币卡</span></span>
         </a>
 
         <a class="product" href="https://github.com/carreypro/kline-trading-plan" target="_blank" rel="noopener" data-preview-url="projects/kline-trading-plan.html" data-preview-domain="github.com/carreypro/kline-trading-plan">
-          <span class="product-top">
-            <span class="product-name">Kline Trading Plan</span>
-            <span class="product-tag"><i class="fa-brands fa-github" aria-hidden="true"></i>开源</span>
-          </span>
-          <span class="product-desc">加密货币 K 线分析与风险交易计划</span>
+          <span class="product-icon product-icon--kline" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span>
+          <span class="product-line"><span class="product-name">Kline Trading Plan</span><span class="product-divider" aria-hidden="true">/</span><span class="product-desc">加密货币 K 线分析与风险交易计划</span></span>
         </a>
 
         <a class="product" href="https://www.yjwujian.cn" target="_blank" rel="noopener">
-          <span class="product-top">
-            <span class="product-name">永劫无间</span>
-            <span class="product-tag"><i class="fa-solid fa-gamepad" aria-hidden="true"></i>游戏</span>
-          </span>
-          <span class="product-desc">武侠动作竞技游戏</span>
+          <span class="product-icon product-icon--naraka" aria-hidden="true"><i class="fa-solid fa-gamepad"></i></span>
+          <span class="product-line"><span class="product-name">永劫无间</span><span class="product-divider" aria-hidden="true">/</span><span class="product-desc">武侠动作竞技游戏</span></span>
         </a>
 
         <a class="product" href="https://www.yjwujian.cn/h5/20240401/slap/#/" target="_blank" rel="noopener">
-          <span class="product-top">
-            <span class="product-name">别逼胡桃出手</span>
-            <span class="product-tag"><i class="fa-solid fa-dice" aria-hidden="true"></i>小游戏</span>
-          </span>
-          <span class="product-desc">永劫无间衍生小游戏</span>
+          <span class="product-icon product-icon--hutao" aria-hidden="true"><i class="fa-solid fa-dice"></i></span>
+          <span class="product-line"><span class="product-name">别逼胡桃出手</span><span class="product-divider" aria-hidden="true">/</span><span class="product-desc">永劫无间衍生小游戏</span></span>
         </a>
 
         <a class="product" href="https://github.com/carreypro/carreyf-space" target="_blank" rel="noopener" data-preview-url="projects/carreyf-space.html" data-preview-domain="github.com/carreypro/carreyf-space">
-          <span class="product-top">
-            <span class="product-name">Carrey Fan</span>
-            <span class="product-tag"><i class="fa-brands fa-github" aria-hidden="true"></i>开源</span>
-          </span>
-          <span class="product-desc">我的个人主页与作品入口</span>
+          <span class="product-icon product-icon--carrey" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+          <span class="product-line"><span class="product-name">Carrey Fan</span><span class="product-divider" aria-hidden="true">/</span><span class="product-desc">我的个人主页与作品入口</span></span>
         </a>
 
         <a class="product" href="https://github.com/carreypro/seedhub-cli" target="_blank" rel="noopener" data-preview-url="projects/seedhub-cli.html" data-preview-domain="github.com/carreypro/seedhub-cli">
-          <span class="product-top">
-            <span class="product-name">SeedHub CLI</span>
-            <span class="product-tag"><i class="fa-brands fa-github" aria-hidden="true"></i>开源</span>
-          </span>
-          <span class="product-desc">搜索 SeedHub 影视资源与下载链接</span>
+          <span class="product-icon product-icon--seedhub" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <span class="product-line"><span class="product-name">SeedHub CLI</span><span class="product-divider" aria-hidden="true">/</span><span class="product-desc">搜索 SeedHub 影视资源与下载链接</span></span>
         </a>
 
         <a class="product" href="https://csgo.5eplay.com/app" target="_blank" rel="noopener">
-          <span class="product-top">
-            <span class="product-name">5EPlay</span>
-            <span class="product-tag"><i class="fa-brands fa-app-store-ios" aria-hidden="true"></i>APP</span>
-          </span>
-          <span class="product-desc">CS 玩家的竞技匹配平台</span>
+          <span class="product-icon product-icon--5eplay" aria-hidden="true"><i class="fa-brands fa-app-store-ios"></i></span>
+          <span class="product-line"><span class="product-name">5EPlay</span><span class="product-divider" aria-hidden="true">/</span><span class="product-desc">CS 玩家的竞技匹配平台</span></span>
         </a>
 
         <button class="products-more" id="productsMore" type="button" aria-expanded="false" aria-controls="productsList">更多</button>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ICT Trading Model Preview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: oklch(0.975 0.005 80);
+      --panel: oklch(0.94 0.007 80);
+      --ink: oklch(0.23 0.012 75);
+      --muted: oklch(0.55 0.012 75);
+      --line: oklch(0.86 0.01 80);
+      --bull: oklch(0.58 0.14 150);
+      --bear: oklch(0.58 0.15 25);
+      --zone: oklch(0.7 0.1 255);
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 58px;
+      padding: 72px 82px;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font: 600 19px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 66px;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .summary {
+      max-width: 440px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 25px;
+      line-height: 1.45;
+    }
+
+    .board {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      box-shadow: 0 24px 65px color-mix(in oklch, var(--ink) 9%, transparent);
+    }
+
+    .board-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--line);
+      font: 600 17px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .status { color: var(--bull); }
+
+    .chart {
+      display: block;
+      width: 100%;
+      height: 280px;
+      background: var(--panel);
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .check { padding: 20px 22px 22px; }
+    .check + .check { border-left: 1px solid var(--line); }
+
+    .check span {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .check strong {
+      font: 600 20px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Agent skill · ICT / SMC</p>
+    <h1>ICT Trading<br>Model</h1>
+    <p class="summary">按证据链验证流动性、市场结构与交易条件。</p>
+  </main>
+
+  <section class="board" aria-label="ICT 市场结构验证示意图">
+    <div class="board-head"><span>BTC-USDT-SWAP · 15m</span><strong class="status">DEVELOPING</strong></div>
+    <svg class="chart" viewBox="0 0 620 280" role="img" aria-label="流动性扫荡与市场结构变化示意图">
+      <g stroke="oklch(0.82 0.01 80)" stroke-width="1">
+        <path d="M0 56H620M0 112H620M0 168H620M0 224H620"/>
+        <path d="M124 0V280M248 0V280M372 0V280M496 0V280"/>
+      </g>
+      <rect x="350" y="120" width="132" height="46" rx="6" fill="color-mix(in oklch, var(--zone) 18%, transparent)" stroke="var(--zone)" stroke-dasharray="6 5"/>
+      <path d="M24 210C72 202 110 175 150 182S222 218 265 184 321 107 365 90 423 77 452 50 487 28 507 72 548 157 600 196" fill="none" stroke="oklch(0.34 0.03 75)" stroke-width="4"/>
+      <path d="M495 48l12 24 13-23" fill="none" stroke="var(--bear)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M535 157h58" fill="none" stroke="var(--bear)" stroke-width="3" stroke-dasharray="7 6"/>
+      <circle cx="507" cy="72" r="7" fill="var(--bear)"/>
+      <circle cx="452" cy="50" r="6" fill="var(--bull)"/>
+      <text x="438" y="29" fill="var(--muted)" font-size="15" font-family="ui-monospace, monospace">BSL sweep</text>
+      <text x="350" y="109" fill="var(--zone)" font-size="15" font-family="ui-monospace, monospace">FVG / OTE</text>
+      <text x="540" y="147" fill="var(--bear)" font-size="15" font-family="ui-monospace, monospace">MSS</text>
+    </svg>
+    <div class="checks">
+      <div class="check"><span>Liquidity</span><strong>verified</strong></div>
+      <div class="check"><span>Structure</span><strong>pending</strong></div>
+      <div class="check"><span>Min R:R</span><strong>1 : 2</strong></div>
+    </div>
+  </section>
+</body>
+</html>

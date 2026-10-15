@@ -14,3 +14,7 @@ horse-animation-dark.html
 audio/*.mp3
 icons/runaway-cover.jpg
 loading-culture-regular.ttf
+
+# AI agent instructions (local only)
+AGENTS.md
+CLAUDE.md

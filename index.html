@@ -596,7 +596,7 @@
   .contact-popover::after {
     content: "";
     position: absolute;
-    left: 7.7rem;
+    left: var(--contact-arrow-left, 7.7rem);
     bottom: -6px;
     width: 11px;
     height: 11px;
@@ -675,10 +675,20 @@
   .contact-popover--x {
     width: min(18.5rem, calc(100vw - 3rem));
   }
-  .contact-popover--x::after { left: 1.35rem; }
-  .contact-popover--douyin::after { left: 4.35rem; }
-  .contact-popover--email::after { left: 8.55rem; }
-  .contact-popover--wechat::after { left: 13.35rem; }
+  .contact-popover--xiaohongshu {
+    width: min(18.5rem, calc(100vw - 3rem));
+  }
+  .contact-wordmark {
+    padding: 0.18rem 0.2rem;
+    border-radius: 4px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.5rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
   .contact-metric {
     display: flex;
     align-items: baseline;
@@ -693,9 +703,11 @@
     line-height: 1;
     overflow-wrap: anywhere;
   }
+  .contact-metric strong.contact-metric-value--long { font-size: 1.7rem; }
   .contact-metric span {
     color: var(--ink-soft);
     font-size: 0.82rem;
+    white-space: nowrap;
   }
   .copy-contact {
     appearance: none;
@@ -741,10 +753,6 @@
     .hero-name { font-size: clamp(28px, 9.6vw, 54px); white-space: normal; line-height: 1.45; }
     .hero-media-wrap { width: min(58vw, 14rem); }
     .product-desc { font-size: 1rem; }
-    .contact-popover--x::after { left: 1.35rem; }
-    .contact-popover--douyin::after { left: 4.2rem; }
-    .contact-popover--email::after { left: 8.3rem; }
-    .contact-popover--wechat::after { left: 12.9rem; }
   }
 </style>
 </head>
@@ -944,6 +952,27 @@
             <div class="contact-popover-body--compact">
               <div class="contact-metric"><strong>150166665</strong><span>抖音号</span></div>
               <a class="contact-popover-action" href="https://www.douyin.com/user/MS4wLjABAAAAqnm8e3GhAfy0Gj7xelz77gdFtZNWolBFedL1Pbn-YFc?from_tab_name=main&amp;vid=7693537082408781530" target="_blank" rel="noopener noreferrer">打开抖音 ↗</a>
+            </div>
+          </aside>
+        </span>
+        <span aria-hidden="true">、</span>
+
+        <span class="contact-item" data-contact-item="xiaohongshu">
+          <a class="contact-trigger" id="xiaohongshuTrigger" href="https://www.xiaohongshu.com/user/profile/650fdbc00000000012007d83" target="_blank" rel="noopener noreferrer" aria-label="在小红书打开 carreyfan">小红书 ↗</a>
+          <aside class="contact-popover contact-popover--xiaohongshu" id="xiaohongshuPopover" role="dialog" aria-label="Carrey 的小红书" aria-hidden="true">
+            <div class="contact-popover-head">
+              <div class="contact-account">
+                <span class="contact-platform-icon" aria-hidden="true"><span class="contact-wordmark">小红书</span></span>
+                <div class="contact-platform-copy">
+                  <span class="contact-popover-title">小红书</span>
+                  <span class="contact-popover-id">@carreyfan</span>
+                </div>
+              </div>
+              <button class="contact-popover-close" type="button" data-close-contact aria-label="关闭小红书浮窗"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <div class="contact-popover-body--compact">
+              <div class="contact-metric"><strong class="contact-metric-value--long">6404478441</strong><span>小红书号</span></div>
+              <a class="contact-popover-action" href="https://www.xiaohongshu.com/user/profile/650fdbc00000000012007d83" target="_blank" rel="noopener noreferrer">打开小红书 ↗</a>
             </div>
           </aside>
         </span>
@@ -1159,9 +1188,19 @@
     });
   }
 
+  // 浮窗箭头对准当前入口文字的中心
+  function alignContactArrow(item) {
+    const popover = item.querySelector('.contact-popover');
+    const trigger = item.querySelector('.contact-trigger');
+    const center = trigger.offsetLeft + trigger.offsetWidth / 2;
+    const arrowLeft = Math.min(Math.max(center - 6, 12), popover.offsetWidth - 24);
+    popover.style.setProperty('--contact-arrow-left', `${arrowLeft}px`);
+  }
+
   function setContactPopover(item, open) {
     clearContactCloseTimer(item);
     if (open) closeContactPopovers();
+    if (open) alignContactArrow(item);
     item.classList.toggle('is-open', open);
     const trigger = item.querySelector('.contact-trigger');
     if (trigger.hasAttribute('aria-expanded')) trigger.setAttribute('aria-expanded', String(open));
